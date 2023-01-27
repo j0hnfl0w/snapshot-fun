@@ -3,12 +3,25 @@ export const useApi = () => {
     {
       id: 1,
       title: 'Do you cats?',
-      options: ['Yes', 'No'],
+      choices: ['Yes', 'No'],
+      scores_total: 10000,
     },
     {
       id: 2,
       title: 'How many fingers on your hand?',
-      options: ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
+      choices: ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
+      scores_total: 100,
+    },
+  ]);
+
+  const answers = reactive([
+    {
+      id: 1,
+      scores: [8000, 2000],
+    },
+    {
+      id: 2,
+      scores: [10, 10, 10, 10, 10, 10],
     },
   ]);
 
