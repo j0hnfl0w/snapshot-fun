@@ -1,5 +1,5 @@
 <template>
-  <div>
-    <span>about</span>
+  <div class="flex flex-row w-full">
+    <span>lorem ipsum</span>
   </div>
 </template>

@@ -1,13 +1,14 @@
 <script lang="ts" setup>
-const api = useApi();
+import { useStore } from '@/groups/play/store'
+import Feed from '@/groups/play/components/Feed.vue'
+
+const api = useApi()
+const store = useStore()
+
 </script>
 
 <template>
-  <div>
-    <div v-for="p in api.proposals" :key="p.id">
-      <span>{{ p.title }}</span>
-      <pre style="font-size: 12px">{{ p }}</pre>
-      <button>Answer</button>
-    </div>
+  <div class="flex flex-row w-full items-start content-start">
+    <Feed />
   </div>
 </template>
