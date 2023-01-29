@@ -25,9 +25,6 @@ export const useApi = () => {
     },
   ]);
 
-  // answer()
-  // getAnswer()
-
   // getProposals()
   // starProposal()
 
