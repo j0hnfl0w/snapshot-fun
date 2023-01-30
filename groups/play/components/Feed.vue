@@ -11,7 +11,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col w-full gap-y-8 items-center content-center">
+  <div class="flex flex-col mb-400px w-full pt-100px gap-y-200px items-center content-center">
     <Proposal
       v-for="p in store.proposals" :key="p.id"
       :proposal="p"
