@@ -8,10 +8,10 @@ const props = defineProps({
 const choiceIdx = ref(-1)
 
 function pick(idx: number) {
-  if (choiceIdx.value === -1) {
-    choiceIdx.value = idx
-  } else {
+  if (choiceIdx.value === idx) {
     props.answer(idx)
+  } else {
+    choiceIdx.value = idx
   }
 }
 </script>
@@ -22,8 +22,8 @@ function pick(idx: number) {
     <div class="flex flex-col mb-2 px-4">
       <h1 class="font-semibold text-2xl">{{ proposal.title }}</h1>
       <!-- <article v-html="proposal.body" class="text-start"></article> -->
-      <!-- <small class="text-gray-700">Pick aswer you think people voted</small> -->
-      <small class="text-xs">{{ proposal.id }}</small>
+      <small class="text-gray-700">Pick aswer you think people voted</small>
+      <!-- <small class="text-xs">{{ proposal.id }}</small> -->
     </div>
     <!-- items -->
     <div class="flex flex-col gap-y-2 w-full">
@@ -48,6 +48,6 @@ function pick(idx: number) {
         <div i-heroicons-outline-arrow-right class="w-20px h-20px"></div>
       </BaseButton>
     </div>
-    <pre class="text-xs">{{ proposal }}</pre>
+    <!-- <pre class="text-xs">{{ proposal }}</pre> -->
   </div>
 </template>
