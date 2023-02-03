@@ -1,45 +1,53 @@
 <script lang="ts" setup>
-import { useStore } from '@/groups/play/store'
-import draggable from 'vuedraggable'
-
 const props = defineProps({
-  proposal: { type: Object, required: true }
+  proposal: { type: Object, required: true },
+  answer: { type: Function, required: true },
+  skip: { type: Function, required: true },
 })
 
-const { log } = useLogger('Proposal')
-const store = useStore()
+const choiceIdx = ref(-1)
 
-const state = reactive({
-  isDragging: false
-})
-
-const choicesLocal = ref(JSON.parse(JSON.stringify(props.proposal.choices)))
+function pick(idx: number) {
+  if (choiceIdx.value === -1) {
+    choiceIdx.value = idx
+  } else {
+    props.answer(idx)
+  }
+}
 </script>
 
 <template>
-  <div class="flex flex-col w-full">
-    <div class="flex flex-col mb-2">
-      <h2 class="font-semibold text-lg">{{ proposal.title }}</h2>
-      <small class="text-gray-700">Order by you think people voted</small>
+  <div class="flex flex-col w-full overflow-hidden">
+    <!-- header -->
+    <div class="flex flex-col mb-2 px-4">
+      <h1 class="font-semibold text-2xl">{{ proposal.title }}</h1>
+      <!-- <article v-html="proposal.body" class="text-start"></article> -->
+      <!-- <small class="text-gray-700">Pick aswer you think people voted</small> -->
+      <small class="text-xs">{{ proposal.id }}</small>
     </div>
-    <!-- TODO: handle diff types? -->
-    <template v-if="proposal.type === 'single-choice'">
-      <draggable 
-        v-model="choicesLocal" 
-        :group="`proposal:${proposal.id}`" 
-        @start="state.isDragging = true" 
-        @end="state.isDragging = false" 
-        :item-key="i => i"
-        class="flex flex-col gap-y-1 items-center content-center"
+    <!-- items -->
+    <div class="flex flex-col gap-y-2 w-full">
+      <div
+        v-for="(c, ci) in proposal.choices" :key="c"
+        :class="choiceIdx === ci ? 'null' : 'px-4'"
       >
-        <template #item="{ element, index }">
-          <div class="rounded cursor-auto flex flex-row bg-gray-300 w-full p-2" :style="{maxWidth: 100-(index*3)+'%'}">
-            <span class="mx-2 text-gray-700">::</span>
-            <span>{{ element }}</span>
-          </div>
-        </template>
-      </draggable>
-    </template>
-    <BaseButton class="mt-2">Submit answer</BaseButton>
+        <BaseButton
+          :type="choiceIdx === ci ? 'primary' : 'secondary'"
+          class="w-full"
+          @click="pick(ci)"
+        >
+          <span>{{ c }}</span>
+        </BaseButton>
+      </div>
+    </div>
+    <!-- footer -->
+    <div class="flex flex-col w-full p-4">
+      <!-- <small>Scores total: {{ proposal.scores_total}}</small> -->
+      <BaseButton type="secondary" @click="skip()">
+        Skip
+        <div i-heroicons-outline-arrow-right class="w-20px h-20px"></div>
+      </BaseButton>
+    </div>
+    <pre class="text-xs">{{ proposal }}</pre>
   </div>
 </template>
