@@ -9,7 +9,7 @@ const props = defineProps({
 
 <template>
   <button
-    class="flex flex-row justify-center items-center content-center gap-x-2 rounded min-w-100px p-2 "
+    class="flex flex-row justify-center items-center content-center gap-x-2 rounded min-w-100px p-2 min-h-50px"
     :class="props.type">
     <slot />
   </button>

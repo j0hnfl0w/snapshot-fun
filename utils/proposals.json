@@ -1,0 +1,2258 @@
+[
+  {
+    "id": "QmSXpyHBrkjzjmGpdYxKvYoRAMvdJNp7rrnyvJqTdtpayZ",
+    "title": "balFactor: incentivizing BAL liquidity on Balancer",
+    "body": "Read the formatted version of this proposal at:\nhttps://forum.balancer.finance/t/balfactor-incentivizing-bal-liquidity-on-balancer/102\nThe content below has been slightly edited for clarity on a text-only format (e.g. links manually included).\n__\n\nTL,DR\n\nProposal to apply a balFactor = 1.5 to the liquidity of every “useful BAL pair”, i.e. { BAL & one of the uncapped tokens (currently WETH, DAI, USDC, WBTC) }, along with a capFactor to BAL adjusted liquidity (i.e. after applying the other factors: ratio, wrap, fee) in case it exceeds $50M. The goal is to increase the incentive for liquidity provisioning with BAL, which should increase BAL liquidity therefore providing better conditions for a wider distribution of BAL ownership.\n\nContext\n\nUsers @jammy, @Lex Moskovski and others at the #liquidity-providers channel on Balancer’s Discord came up with the idea of increasing incentives for BAL pools. After a lot of considerations from multiple people and refining on that initial idea, the community ended up voting (on 2020-07-10) on the creation of a balFactor:\n\n<image with Discord voting results: balFactors of 1 and 1.5 were the vast majority of votes>\n \nAs it was bound to happen at some point, Discord voting was not enough to reach consensus, and a final decision on the matter was postponed until a voting tool could be implemented taking into account the BAL (governance tokens!) balance of each community member.\n\nThe Proposal\n\nApplication of a capFactor in similar terms as described in the original capFactor proposal (https://forum.balancer.finance/t/capfactor-capping-eligible-liquidity-to-10m-per-token/56), limiting the BAL adjusted liquidity to $50M.\n\nAfter the capFactor for all capped tokens has been calculated (to correct down an eventually excessive adjusted liquidity for each capped token), a balFactor of 1.5 is applied to every pair of type {BAL & uncapped_token}.\n\nFurther Considerations\n\nPairs with capped tokens do not qualify for the balFactor, so that pairs of questionable trading demand/utility (e.g. {BAL & cBAT}) are not incentivized.\n\nThe $50M cap is more of a safety measure, in place just for the unlikely scenario where the balFactor results in huge and unnecessary BAL liquidity coupled with an unreasonable BAL price spike. Such a scenario is automatically neutered by the cap. For instance, with $100M of BAL adjusted liquidity, the liquidity in all BAL pairs is cut in half for the purposes of liquidity mining distribution (i.e. capFactor_BAL = min(100M, 50M)/100M = 0.5, as explained in the capFactor proposal).Read the formatted version of this proposal at:\nhttps://forum.balancer.finance/t/balfactor-incentivizing-bal-liquidity-on-balancer/102\nThe content below has been slightly edited for clarity on a text-only format (e.g. links manually included).\n\n_\n\nTL,DR\n\nProposal to apply a balFactor = 1.5 to the liquidity of every “useful BAL pair”, i.e. { BAL & one of the uncapped tokens (currently WETH, DAI, USDC, WBTC) }, along with a capFactor to BAL adjusted liquidity (i.e. after applying the other factors: ratio, wrap, fee) in case it exceeds $50M. The goal is to increase the incentive for liquidity provisioning with BAL, which should increase BAL liquidity therefore providing better conditions for a wider distribution of BAL ownership.\n\nContext\n\nUsers @jammy, @Lex Moskovski and others at the #liquidity-providers channel on Balancer’s Discord came up with the idea of increasing incentives for BAL pools. After a lot of considerations from multiple people and refining on that initial idea, the community ended up voting (on 2020-07-10) on the creation of a balFactor:\n\n<image with Discord voting results: balFactors of 1 and 1.5 were the vast majority of votes>\n \nAs it was bound to happen at some point, Discord voting was not enough to reach consensus, and a final decision on the matter was postponed until a voting tool could be implemented taking into account the BAL (governance tokens!) balance of each community member.\n\nThe Proposal\n\nApplication of a capFactor in similar terms as described in the original capFactor proposal (https://forum.balancer.finance/t/capfactor-capping-eligible-liquidity-to-10m-per-token/56), limiting the BAL adjusted liquidity to $50M.\n\nAfter the capFactor for all capped tokens has been calculated (to correct down an eventually excessive adjusted liquidity for each capped token), a balFactor of 1.5 is applied to every pair of type {BAL & uncapped_token}.\n\nFurther Considerations\n\nPairs with capped tokens do not qualify for the balFactor, so that pairs of questionable trading demand/utility (e.g. {BAL & cBAT}) are not incentivized.\n\nThe $50M cap is more of a safety measure, in place just for the unlikely scenario where the balFactor results in huge and unnecessary BAL liquidity coupled with an unreasonable BAL price spike. Such a scenario is automatically neutered by the cap. For instance, with $100M of BAL adjusted liquidity, the liquidity in all BAL pairs is cut in half for the purposes of liquidity mining distribution (i.e. capFactor_BAL = min(100M, 50M)/100M = 0.5, as explained in the capFactor proposal).Read the formatted version of this proposal at:\nhttps://forum.balancer.finance/t/balfactor-incentivizing-bal-liquidity-on-balancer/102\nThe content below has been slightly edited for clarity on a text-only format (e.g. links manually included).\n\n_\n\nTL,DR\n\nProposal to apply a balFactor = 1.5 to the liquidity of every “useful BAL pair”, i.e. { BAL & one of the uncapped tokens (currently WETH, DAI, USDC, WBTC) }, along with a capFactor to BAL adjusted liquidity (i.e. after applying the other factors: ratio, wrap, fee) in case it exceeds $50M. The goal is to increase the incentive for liquidity provisioning with BAL, which should increase BAL liquidity therefore providing better conditions for a wider distribution of BAL ownership.\n\nContext\n\nUsers @jammy, @Lex Moskovski and others at the #liquidity-providers channel on Balancer’s Discord came up with the idea of increasing incentives for BAL pools. After a lot of considerations from multiple people and refining on that initial idea, the community ended up voting (on 2020-07-10) on the creation of a balFactor:\n\n<image with Discord voting results: balFactors of 1 and 1.5 were the vast majority of votes>\n \nAs it was bound to happen at some point, Discord voting was not enough to reach consensus, and a final decision on the matter was postponed until a voting tool could be implemented taking into account the BAL (governance tokens!) balance of each community member.\n\nThe Proposal\n\nApplication of a capFactor in similar terms as described in the original capFactor proposal (https://forum.balancer.finance/t/capfactor-capping-eligible-liquidity-to-10m-per-token/56), limiting the BAL adjusted liquidity to $50M.\n\nAfter the capFactor for all capped tokens has been calculated (to correct down an eventually excessive adjusted liquidity for each capped token), a balFactor of 1.5 is applied to every pair of type {BAL & uncapped_token}.\n\nFurther Considerations\n\nPairs with capped tokens do not qualify for the balFactor, so that pairs of questionable trading demand/utility (e.g. {BAL & cBAT}) are not incentivized.\n\nThe $50M cap is more of a safety measure, in place just for the unlikely scenario where the balFactor results in huge and unnecessary BAL liquidity coupled with an unreasonable BAL price spike. Such a scenario is automatically neutered by the cap. For instance, with $100M of BAL adjusted liquidity, the liquidity in all BAL pairs is cut in half for the purposes of liquidity mining distribution (i.e. capFactor_BAL = min(100M, 50M)/100M = 0.5, as explained in the capFactor proposal).Read the formatted version of this proposal at:\nhttps://forum.balancer.finance/t/balfactor-incentivizing-bal-liquidity-on-balancer/102\nThe content below has been slightly edited for clarity on a text-only format (e.g. links manually included).\n\n_\n\nTL,DR\n\nProposal to apply a balFactor = 1.5 to the liquidity of every “useful BAL pair”, i.e. { BAL & one of the uncapped tokens (currently WETH, DAI, USDC, WBTC) }, along with a capFactor to BAL adjusted liquidity (i.e. after applying the other factors: ratio, wrap, fee) in case it exceeds $50M. The goal is to increase the incentive for liquidity provisioning with BAL, which should increase BAL liquidity therefore providing better conditions for a wider distribution of BAL ownership.\n\nContext\n\nUsers @jammy, @Lex Moskovski and others at the #liquidity-providers channel on Balancer’s Discord came up with the idea of increasing incentives for BAL pools. After a lot of considerations from multiple people and refining on that initial idea, the community ended up voting (on 2020-07-10) on the creation of a balFactor:\n\n<image with Discord voting results: balFactors of 1 and 1.5 were the vast majority of votes>\n \nAs it was bound to happen at some point, Discord voting was not enough to reach consensus, and a final decision on the matter was postponed until a voting tool could be implemented taking into account the BAL (governance tokens!) balance of each community member.\n\nThe Proposal\n\nApplication of a capFactor in similar terms as described in the original capFactor proposal (https://forum.balancer.finance/t/capfactor-capping-eligible-liquidity-to-10m-per-token/56), limiting the BAL adjusted liquidity to $50M.\n\nAfter the capFactor for all capped tokens has been calculated (to correct down an eventually excessive adjusted liquidity for each capped token), a balFactor of 1.5 is applied to every pair of type {BAL & uncapped_token}.\n\nFurther Considerations\n\nPairs with capped tokens do not qualify for the balFactor, so that pairs of questionable trading demand/utility (e.g. {BAL & cBAT}) are not incentivized.\n\nThe $50M cap is more of a safety measure, in place just for the unlikely scenario where the balFactor results in huge and unnecessary BAL liquidity coupled with an unreasonable BAL price spike. Such a scenario is automatically ne... (10240 total length)",
+    "choices": [
+      "Approve",
+      "Reject"
+    ],
+    "scores_total": 301890.7972624069,
+    "scores": [
+      301714.28164624,
+      176.5156161669749
+    ],
+    "type": "single-choice",
+    "start": 1595088000,
+    "end": 1595174400,
+    "author": "0x8BBE4Ac64246d600BC2889ef5d83809D138F03DF",
+    "space": {
+      "id": "balancer.eth"
+    }
+  },
+  {
+    "id": "QmXYVj4GBu16GfuTLouxQSvbB8w3G2EAvYq9TAxX38ruKb",
+    "title": "Modifying feeFactor: toward reducing the mining penalty for high-fee pools",
+    "body": "Read the formatted version of this proposal at:\nhttps://forum.balancer.finance/t/modifying-feefactor-toward-reducing-the-mining-penalty-for-high-fee-pools/103\nThe content below has been slightly edited for clarity on a text-only format (e.g. equations substituted from image to text).\n__\n\nProposal to modify the feeFactor curve by changing the exponential coefficient from 0.5 to 0.25. The effect would be to reduce the liquidity mining penalty for high-fee pools, thereby incentivizing a shift toward more profitable fees for liquidity providers.\n\nMotivation\n\nWhile the core motivation for liquidity mining is the equitable distribution of protocol governance power, economic incentives inevitably attract profit seekers. As such, it is important to align the incentives of those profit seekers with the best interests of the Balancer protocol. Liquidity providers may initially be attracted to Balancer by the profit opportunity that liquidity mining represents, but whether they ultimately stay with the protocol depends on their ability to generate revenue independent of BAL rewards. Above all, Balancer seeks to attract sustainable, long-term liquidity.\n\nAt present, the feeFactor curve is quite steep. Swap fees over 0.5% are sharply penalized, with rewards dropping into “negligible” territory around a 5% fee. There are two key consequences of this:\n\nLiquidity providers will set fees as low as possible in order to maximize BAL yield. Many existing pools with fees around ~0.1% are unprofitable in the absence of the BAL distribution and will not be able to outpace impermanent loss in the near future.\n\nLiquidity providers will not bother to weigh the tradeoffs of high trading fees, as >3%-fee pools will not earn much BAL at all and it is quite trivial to earn a high return by just parking some liquidity in a low-fee pool. This creates a disincentive toward certain novel use cases of Balancer such as the “swing trading” strategy proposed by Fernando here: https://medium.com/balancer-protocol/high-fee-balancer-pools-for-swing-trading-8bc1c169a4c2\n\nThe Proposal\n\nThe current fee factor takes the following form:\n\nfeeFactor = exp( -(fee/2) ^ 2 )\n\nIt can be generalized, replacing the constant factor (1/2) in the exponential with a coefficient called k.\n\nfeeFactor = exp( -(k*fee) ^ 2 )\n\nThis proposal is to change the value of this coefficient, k, from 0.5 to 0.25. This will have the effect of shifting the feeFactor curve to the right:\n\n<image showing the two feeFactor curves side by side>\n\nPractical Consequences\n\nThe effect on various common swap fees can be computed. Here are the results of the proposed change, taking the format (swap fee : old feeFactor => new feeFactor), where feeFactors are rounded to two decimal places.\n\n  0.1% : 1.00 => 1.00\n  0.2% : 0.99 => 1.00\n  0.3% : 0.98 => 0.99\n  0.5% : 0.94 => 0.98\n  1.0% : 0.78 => 0.94\n  2.0% : 0.37 => 0.78\n  3.0% : 0.11 => 0.57\n  5.0% : 0.00 => 0.21\n 10.0% : 0.00 => 0.00",
+    "choices": [
+      "Approve",
+      "Reject"
+    ],
+    "scores_total": 250818.9466546669,
+    "scores": [
+      250809.7114714248,
+      9.235183242137136
+    ],
+    "type": "single-choice",
+    "start": 1595088000,
+    "end": 1595174400,
+    "author": "0x8BBE4Ac64246d600BC2889ef5d83809D138F03DF",
+    "space": {
+      "id": "balancer.eth"
+    }
+  },
+  {
+    "id": "QmboDWvsXYXPZb44arPVoMa3LHuv74YsGZ3cSoG6uj4oZe",
+    "title": "Modifying wrapFactor: applying a 0.7 factor to SOFT-pegged pairs",
+    "body": "Read the formatted version of this proposal at:\nhttps://forum.balancer.finance/t/modifying-wrapfactor-applying-a-0-7-factor-to-soft-pegged-pairs/108\nThe content below has been slightly edited for clarity on a text-only format (e.g. equations substituted from image to text).\n--\n\nTL,DR\nProposal to apply a wrapFactor = 0.7 to the liquidity of every pair of soft-pegged tokens for the purposes of liquidity mining distribution, in an effort to attract more useful liquidity to the protocol.\n\nContext\nThe original proposal approved about a month ago applied a wrapFactor = 0.1 for hard-pegged tokens, i.e. tokens that are equivalent to each other. Example: {USDC & cUSDC}.\n\nRead more: wrapFactor: penalizing pairs of equivalent tokens in liquidity mining 3\n\nSince then, we have seen the rise of pools that are not subject to that wrapFactor, but contain tokens that track the same asset and are naturally highly correlated. These are being called soft-pegged pairs. Example: {USDC & mUSD}.\n\nLiquidity in soft-pegged pairs usually attracts relatively little trading volume on Balancer while at the same time exposing LPs to a lower risk of impermanent loss. Many community members have expressed their concerns about this type of liquidity being unfairly highly compensated by the current mining distribution rules with their less useful liquidity. Some believe the wrapFactor for the soft-pegged pairs should be as low as 0.3. Others believe it should not apply at all.\n\nAfter weeks of much debate, it seems 0.7 is a reasonable compromise. For being a contentious topic, a final decision has been postponed until a voting tool using BAL tokens was implemented. This value could be revised (up or down) at some point in the future, according to community sentiment regarding the practical results observed.\n\nThe Proposal\nFor every pair, we analyze:\n\nIs this a hard-pegged pair? If so, wrapFactor = 0.1;\nIf not, is this a soft-pegged pair? If so, wrapFactor = 0.7;\nIf not, wrapFactor = 1.0 (i.e. no liquidity adjustment from the wrapFactor).\nOther examples of soft-pegged pairs:\n\n{renBTC & WBTC} (both track BTC),\n{DAI & cUSDT} (both track USD),\netc.\nFurther Considerations\nAll liquidity in compliant ERC20 tokens is welcome in Balancer pools, but BAL distribution is a scarce weekly resource (i.e. for an LP to get more BAL, other LPs have to get less). So penalizing soft-pegs is the equivalent of giving an extra incentive for liquidity that has shown itself more useful to the protocol. The 0.7 value has been seen (apparently by most community members) as a conservative measure, that doesn’t drastically alter the current incentives for liquidity and is an adequate value with which to move forward.",
+    "choices": [
+      "Approve",
+      "Reject"
+    ],
+    "scores_total": 296856.62430714024,
+    "scores": [
+      284516.3998571953,
+      12340.22444994485
+    ],
+    "type": "single-choice",
+    "start": 1595088000,
+    "end": 1595174400,
+    "author": "0x8BBE4Ac64246d600BC2889ef5d83809D138F03DF",
+    "space": {
+      "id": "balancer.eth"
+    }
+  },
+  {
+    "id": "QmeWmvdFCTq5tnFHqgFmAVJDCccTYjg1zWb9cfUByg7zbz",
+    "title": "First batch of grants from Balancer Ecosystem Fund",
+    "body": "[This proposal is also on Balancer's forum.](https://forum.balancer.finance/t/first-batch-of-balancer-ecosystem-fund-grants/127)\n\n### TL,DR\n\nProposal to approve the first batch of grants of the Balancer ecosystem fund. This first batch will be comprised of 100k BAL, future batches will likely be smaller. To recap, [the idea of this 5M BAL fund](https://medium.com/balancer-protocol/bal-is-live-104ba56e1945) is to attract and incentivize strategic partners/stakeholders that will help the Balancer ecosystem grow and thrive.\n\n### Context\n\nThere are many projects and protocols that may want to integrate and/or build on Balancer. This is probably one of the most important areas for Balancer to thrive as a protocol and defend itself from new entrants or copycats. In many cases, it makes sense for Balancer to incentivize these integrations as these partners may need some extra motivation for them to feel staked within the Balancer ecosystem. Grants can also help partners convince their communities that Balancer is the right protocol to integrate their liquidity/users with.\n\nBalancer Labs will be responsible for deciding on the specific grant distribution to avoid governance micromanaging the decision process for each single grant. After a grant batch is fully allocated (if there is some left-over, it will be added to the following batch), a report with the grant allocation in that batch will be released to the community and a request for approval of a new batch will be voted on. This dynamics ensures that Balancer Labs has to do a good job at grant distribution since if this is not the case a new batch of grants might not be approved.\n\n### The Proposal\n\nA 100k BAL first batch of grants to be allocated by Balancer Labs to many teams/projects that are building on / contributing to Balancer. \n\nAll the grants have the long term alignment of incentives with Balancer protocol. Therefore, all grants awarded in this first batch will be given out as follows:\n* **90% of the grant is vested** linearly over 1 year (ensured by a smart contract)\n* **10% of the grant is unlocked**, but teams are expected **not to sell** these tokens, instead to distribute them to their project users or to hold them for voting on Balancer governance proposals.\n\n### Further Considerations\n\nBalancer Labs has started working with strategic partners and giving grants since before BAL was even launched. Many grants were given out based on the seed price of $0.60 per BAL, so this is why the high number of BAL tokens in this first batch. Future batches will probably be of 50k BAL, as individual grants are going to be a lot smaller given the current market price of BAL.",
+    "choices": [
+      "Approve",
+      "Reject"
+    ],
+    "scores_total": 129011.64870828844,
+    "scores": [
+      129001.24616121154,
+      10.402547076892398
+    ],
+    "type": "single-choice",
+    "start": 1595865600,
+    "end": 1595952000,
+    "author": "0x8BBE4Ac64246d600BC2889ef5d83809D138F03DF",
+    "space": {
+      "id": "balancer.eth"
+    }
+  },
+  {
+    "id": "QmUadcUgd3jAhJbofgrnKNMfeuGFvMmybhCkttW4gGfYYJ",
+    "title": "Modifying wrapFactor: applying a 0.2 factor to SOFT-pegged pairs",
+    "body": "[This proposal has been posted by user 5325235235235 on the Balancer forum](https://forum.balancer.finance/t/modifying-wrapfactor-applying-a-0-2-factor-to-soft-pegged-pairs/138). The text below is an exact copy of it.\n\nTL,DR \n\nProposal to apply a wrapFactor = 0.2 to the liquidity of every pair of soft-pegged tokens for the purposes of liquidity mining distribution, in an effort to attract more useful liquidity to the protocol. \n\nContext \n\nThe original proposal 2 weeks ago applied a wrapFactor = 0.7 for soft-pegged tokens, i.e. tokens that track the same asset and are naturally highly correlated. These are being called soft-pegged pairs. Example: {USDC & mUSD}. \n\nLiquidity in soft-pegged pairs usually attracts relatively little trading volume on Balancer while at the same time exposing liquidity providers to a lower risk of impermanent loss. Many community members have expressed their concerns about this type of liquidity being unfairly highly compensated by the current mining distribution rules with their less useful liquidity. The introduction of 0.7 wrapFactor did not stop the explosion in size of soft-pegged pools chasing low risk yield on Balancer. Majority of publicity that Balancer recently got was related to sky high rewards for supplying soft-pegged liquidity. \n\nAfter much debate, it seems that 0.2 is a reasonable compromise. This value could be revised (up or down) at some point in the future, according to community sentiment regarding the practical results observed. This is unlikely to happen within the next month.\n\nThe Proposal \n\nFor every pair, we analyze: \n\nIs this a hard-pegged pair? If so, wrapFactor = 0.1; \nIf not, is this a soft-pegged pair? If so, wrapFactor = 0.2; \nIf not, wrapFactor = 1.0 (i.e. no liquidity adjustment from the wrapFactor). \n\nExamples of soft-pegged groups: \n`{WBTC, renBTC, pBTC, sBTC, imBTC, cWBTC, BTC++}` (all track BTC), \n`{DAI, cUSDT, mUSD, USDC, sUSD, USD++, TUSD, yUSD-SEP20, aUSDT, aTUSD, aUSDC, aBUSD, oaUSDC, aSUSD, USDx, aDAI, yDAI+yUSDC+yUSDT+yTUSD}` (all track USD), \netc. \nAll the above are pooled on Balancer. \n\nFurther Considerations \n\nAll liquidity in compliant ERC20 tokens is welcome in Balancer pools, but BAL distribution is a scarce weekly resource (i.e. for an LP to get more BAL, other LPs have to get less). Penalizing soft-pegs is the equivalent of giving an extra incentive for liquidity that has shown itself more useful to the protocol. The 0.2 value has been seen (by most community members) as a reasonable measure, that will be good for the future of Balancer. \n\nWe feel that liquidity composition on Uniswap is natural, while the composition on Balancer is highly skewed towards soft-pegged assets due to very generous rewards. We hope that liquidity composition will improve with wrapFactor 0.2. \n\nMany believe that the pools like the extreme examples below are earning rewards that are too generous: \n`WBTC-imBTC-pBTC-sBTC:` 1.2m liquidity, $0 24h volume \n`cUSDC-cUSDT:` $1.3m liquidity, $0 24h volume \n`cUSDC-cUSDT:` 1m liquidity, $0 24h volume \n`cUSDC-cDAI:` 200k liquidity, $0 24h volume`cUSDC-cDAI:` 200k liquidity, $0 24h volume",
+    "choices": [
+      "Approve",
+      "Reject"
+    ],
+    "scores_total": 349071.1510328508,
+    "scores": [
+      328416.10812719975,
+      20655.04290565102
+    ],
+    "type": "single-choice",
+    "start": 1596297600,
+    "end": 1596384000,
+    "author": "0x107174D70b33523E83711EA4C3F4229cdB8A7Cb1",
+    "space": {
+      "id": "balancer.eth"
+    }
+  },
+  {
+    "id": "QmTCRfUvkDr5swnFfYYbf4Vr9MoQyb8Z1kZZR62DnaFerC",
+    "title": "Proposal to Update the Whitelist Process",
+    "body": "[This proposal is also on Balancer's forum.](https://forum.balancer.finance/t/proposal-to-update-the-whitelist-process/217)\n\n**TL;DR**\n\nProposal to modify the token whitelist process from the status quo. The method described circumvents the need for any subjective decision-making at the time of whitelisting, instead favoring a set of purely technical criteria. To protect the liquidity mining program from bad actors, a series of cap tiers is added to the capFactor computation (see the [original capFactor proposal](https://forum.balancer.finance/t/capfactor-capping-eligible-liquidity-to-10m-per-token/56) for reference), with the default cap for new tokens being reduced to just $1M of adjusted liquidity.\n\n**Context**\n\nAfter seven weeks of whitelisting, we've begun to observe some serious contention within/regarding the existing token whitelist process. Namely, it is no longer acceptable for me (@rabmarut) to have subjective control over the list. There has been too much controversy recently about the interpretation of certain listing criteria, and no entity should have the power to make those interpretations.\n\nThe current criteria for whitelisting are described in the [original whitelist proposal](https://forum.balancer.finance/t/proposing-the-token-whitelist-for-bal-distribution/55) and copied below:\n\n1. Token must return boolean success on transfer. If an ERC-20 does not return a bool when transfer() is called, it is broken within Balancer v1. Funds added to Balancer liquidity pools will be irrecoverable, and there is nothing the team can do to intervene; Balancer v1 is a set of immutable smart contracts with no administrative keys.\n2. Token must not charge fees on transfer. While not necessarily intended as an attack vector, transfer fees are dangerous for Balancer pools. Every trade or removal of liquidity from pools containing these assets will result in a pool price which is “out of sync” with the true balances. Arbitrageurs can gulp() the pool and then trade with it at liquidity providers’ expense. Among others, all “deflationary” assets fall into this category.\n3. Token contract must be verified on etherscan. This metric favors tokens which value transparency and reliability.\n4. Token must be listed and have a live USD price feed on CoinGecko. This is the price oracle used for distributing BAL proportional to shares of overall liquidity.\n5. Token distribution must be somewhat equitable. This is a highly subjective metric subject to community consensus, but in general the desire is for tokens to be somewhat evenly distributed. If the founders, for example, hold 90% of the supply, there are probably ways in which they can hurt liquidity providers or extract disproportionate BAL rewards by artificially driving up the token’s price.\n6. Token must provide some form of “real” value. This is another highly subjective metric, but the idea is for the community to actively filter out tokens which have been promoted as “pump-and-dump” schemes, which could hurt unknowing liquidity providers.\n\nIt seems clear that Criterion #6 is far too subjective and therefore prone to the curator's interpretation.\n\n**The Proposal**\n\nCriterion #6 (above) will be removed from the existing list, and Criteria #1-5 will fully govern the whitelisting process. That is, there will be a minimal set of _objective_ criteria for listing: a token must be technically compatible with Balancer, and its distribution must not raise any red flags as to the ability of a single party to game Balancer's liquidity mining program by manipulating either the token's price or supply. These criteria are fully focused on:\n\n1. Protecting Balancer liquidity providers from loss of funds.\n2. Protecting the BAL distribution from centralized actors.\n\nThe barrier to entry would be quite low for whitelisting tokens, but at any time, if a token is deemed to be either _maliciously harming LPs or gaming the BAL distribution_, it could be removed with a governance vote. Note that this approach passes no judgment on the intrinsic value of a token and leaves liquidity providers to decide for themselves what is and is not a \"good investment\" or a \"legitimate project.\" Tokens would never be omitted or removed from the list on subjective merits; rather, one of two explicit removal criteria must be met:\n\n1. There is significant evidence supporting the hypothesis that a fraudulent event took place in which token holders lost funds, i.e. an _exit scam_.\n2. The token is being used as a BAL farm, thereby disadvantaging other Balancer liquidity providers. For example, perhaps 80% of the token's supply sits in a Balancer pool with a 0.0001% fee, and it draws either very little or mostly inorganic trade volume. Care must be taken not to over-emphasize volume here, but it may _help_ to refine the list of potential manipulators. Another example of BAL farming could be that a single entity launches many different tokens to circumvent the $1M liquidity cap.\n\nIn calculating the week's BAL distribution, each token's total liquidity is adjusted by the feeFactor, ratioFactor, and wrapFactor; then the adjusted liquidity is capped at a predefined USD-denominated limit. This capFactor mechanism exists to ensure that no one token can reap a disproportionate share of the week's liquidity mining reward. To mitigate the potential consequences of the permissive listing scheme described above, I propose to make the default cap for each new token quite small. The capFactor system would be modified such that, instead of a single cap (now $10M) applied to all tokens, there would be several tiers of capping:\n\n```\ncap1:   $1M\ncap2:   $3M\ncap3:  $10M\ncap4:  $30M\ncap5: $100M\n```\n\nTo ease the transition to this new scheme, the status quo of a $10M cap will be maintained for all existing whitelisted tokens - this puts existing tokens at `cap3`. All new tokens, upon being added to the whitelist, would instead be capped by default at `cap1`. At any time, community members may propose to vote a token into a different cap tier. Though not an explicit requirement, the spirit of these changes would be that of reactive necessity rather than preemptive ranking: if a token's TVL on Balancer nears or exceeds that token's cap, vote to raise the cap to the next tier. All such votes would be conducted with three options, for the sake of fairness of governance:\n\n1. No change\n2. Migrate the token up to the next (adjacent) cap tier\n3. Migrate the token down to the previous (adjacent) cap tier\n\nFurthermore, the cap tiers themselves can be adjusted in value (scaled up or down) by vote, as market conditions may result in more or less USD-denominated TVL across Balancer pools. These votes would be far less frequent and more flexible in structure.\n\n**Conclusion**\n\nBalancer's liquidity mining program was always designed to be permissive. The introduction of a token whitelist was nothing more than a necessary evil to inhibit known attacks on the BAL token distribution. My hope is that the new cap structure and token removal criteria will prove strong enough to mitigate such attacks moving forward, while still enabling Balancer's trustless and permissionless vision.",
+    "choices": [
+      "Approve",
+      "Reject"
+    ],
+    "scores_total": 149019.04592538544,
+    "scores": [
+      144591.37421735382,
+      4427.671708031612
+    ],
+    "type": "single-choice",
+    "start": 1597507200,
+    "end": 1597593600,
+    "author": "0x40FDAa1bff3BB87bC70955Be6657edBFdBeb122e",
+    "space": {
+      "id": "balancer.eth"
+    }
+  },
+  {
+    "id": "QmUWxCMi1s4vtpUy9HCZGDZnVdzE2zivN73HfUK73WA68a",
+    "title": "Proposal to Introduce Liquidity Staking",
+    "body": "[This proposal is also on Balancer's forum.](https://forum.balancer.finance/t/proposal-liquidity-staking/243). The proposed code to implement it can be found [here](https://github.com/balancer-labs/bal-mining-scripts/tree/liquidity-staking).\n\n# TLDR:\n\nProposal to have 45k BAL (~31% of the weekly distribution) allocated as an extra incentive for liquidity between BAL and uncapped tokens (WETH, DAI, USDC, WBTC). Wallets flagged as Balancer Labs shareholders don't qualify for this \"liquidity staking\" extra incentive.\nThe main goals are to significantly increase liquidity on key BAL pairs and to allow non-shareholders to compound their BAL holdings at a much faster pace, accelerating protocol decentralization.\n\n![image|621x500, 50%](upload://5S3GvpjON1hNGnO7wuSfqNd3smk.png)   \n\n\n# Motivation\n\nThe **importance of BAL liquidity** can't be overstated:\n\n* *TRUER PRICE DISCOVERY*: it improves trading conditions for all market participants (lower spreads and less slippage for both buyers and sellers), allowing for a more transparent and effective price discovery process;\n\n* *SUPERIOR LP INCENTIVES*: a stronger token (with higher price inertia) results in a higher quality for the incentives given to LPs (liquidity providers) via liquidity mining;\n\n* *SHARPER GOVERNANCE*: it opens doors to a new class of invaluable stakeholders and protocol governors (e.g. larger investors, especially those heavily involved in and experienced with DeFi protocols);\n\n* *BROADER GOVERNANCE*: with no participation from Balancer Labs' shareholders (more on that later), liquidity staking will accelerate BAL distribution and protocol decentralization by giving all other BAL holders the opportunity to compound their governance rights at a much faster pace;\n\n* *SAFER GOVERNANCE*: pools are non-custodial and BAL in them retain full voting power (i.e. no need to withdraw liquidity to vote), such that high liquidity and a healthy governance are not in conflict;\n\nBalancer itself being a DEX, it feels only natural as the ideal venue for high BAL liquidity to be incentivized. Finally, it's worth noting that allowing a high portion of the token supply to be concentrated on *centralized* exchanges could expose the governance to significant risks, as illustrated by the episode with STEEM.\n\n\n# Recapping: how liquidity adjustment currently works\n\nThe 145k BAL [weekly distribution](https://docs.balancer.finance/protocol/bal-liquidity-mining) to LPs on Balancer is calculated proportionally to the *adjusted* liquidity contributed by each LP. This adjustment is made by applying (i.e. multiplying) a few *factors* to their liquidity measured in dollar terms.\n\nNaturally, the value of those factors can be:\n* equal to `1`, having no effect;\n* less than `1`, acting as a penalty (when the liquidity is deemed less useful);\n* greater than `1`, acting as an extra incentive.\n\nA `feeFactor ≤ 1` (see [proposal](https://forum.balancer.finance/t/modifying-feefactor-toward-reducing-the-mining-penalty-for-high-fee-pools/103)) applies a small penalty to pools with higher fees.\n\n**For each pair inside a pool**, we apply:\n*  a `wrapFactor` of:\n   * `1.0` for uncorrelated pairs (no penalty),\n   * `0.2` for [soft pegs](https://forum.balancer.finance/t/modifying-wrapfactor-applying-a-0-2-factor-to-soft-pegged-pairs/138),\n   * `0.1` for [hard pegs](https://forum.balancer.finance/t/wrapfactor-penalizing-pairs-of-equivalent-tokens-in-liquidity-mining/28); and \n\n* a `BRF` (BAL & Ratio Factor), which is the combination of a `ratioFactor ≤ 1` (see [proposal](https://forum.balancer.finance/t/introduction-of-a-weight-ratio-factor-in-liquidity-mining/15)) and a `stakingBoost ≥ 1` (described in [this proposal](https://forum.balancer.finance/t/balfactor-incentivizing-bal-liquidity-on-balancer/102) and with further calculation details specified in its [ammendment](https://forum.balancer.finance/t/balfactor-incentivizing-bal-liquidity-on-balancer/102/4)). \n`BRF = stakingBoost * ratioFactor`\n  * If the pair is **not** of type `{BAL & uncapped_token}` (uncapped tokens currently being: WETH, DAI, USDC, WBTC, BAL), then its `stakingBoost = 1` (i.e. the incentive doesn't apply to this pair).\n\nThe current `BRF` will only depend on the characteristics of the pool (its tokens and weights), and may have a maximum value of `1.54`. It looks like this:\n\n![image|690x455, 75%](upload://xqztRzplangZYzS0j70jlwfgc7P.png) \n\nAfter looping through all possible pairs in a pool, we combine their factors (via [weighted average](https://github.com/balancer-labs/bal-mining-scripts/blob/master/lib/factors.js#L111)) and the result is a `wrapFactor` and a `BRF` for the whole pool. \n\nFinally, we calculate and apply a `tokenCapFactor` adjusting down the liquidity of a token when it exceeds a predetermined maximum. Except for the 5 uncapped tokens already mentioned, all tokens eligible for liquidity mining are currently capped at $10M each. See more details on [how to calculate it](https://forum.balancer.finance/t/capfactor-capping-eligible-liquidity-to-10m-per-token/56) and the [recent changes](https://forum.balancer.finance/t/proposal-to-update-the-whitelist-process/217) to how token caps will evolve.\n\n# The Proposal\n\nThis is a proposal to have **45k BAL (~31% of the weekly distribution) allocated as an extra incentive for liquidity staking**.\n\nThis extra incentive is:\n\n> all BAL distributed as a result of applying a `stakingBoost > 1` to the liquidity of `{BAL & uncapped_token}` pairs, from wallets which are not flagged as shareholders of Balancer Labs.\n\nThe remaining **100k BAL would be distributed to all LPs** in all eligible pools, disconsidering the effect of a `stakingBoost` (i.e. all liquidity being subject to `BRF = ratioFactor`).\n\nThe constant value now would be: `STAKERS_SHARE = 45000 / 145000`, and we can then calculate the unique value for `stakingBoost` that satisfies this target distribution. \n\nThe intended result is for BAL liquidity on Balancer to increase substantially, **but in a self-regulated way**. \n\nThe simple yet powerful idea is: as BAL liquidity gets higher the extra incentive to staking gets **diluted among stakers**, so that our constant target for `STAKERS_SHARE` is met.\n\nIn a more visual approach:\n \n* when non-shareholder BAL liquidity is low, the `stakingBoost` will be high, resulting in a high `BRF` (a hypothetical scenario being the **orange** curve in the graph below, in which `BRF` peaks at `12`), so there will be a *very strong* incentive for BAL liquidity to increase;\n\n* when non-shareholer BAL liquidity is high (the desired scenario), the `stakingBoost` will have come down to lower levels, resulting in a lower BRF (a hypothetical scenario being the **green** curve below, in which `BRF` peaks at `3`).\n\n![image|621x500](upload://oI5XnPgsZE1VcQWDyeJCWovr1IV.png)  \n\n# Calculating the stakingBoost: a practical example\n\nWe first calculate the `liquidityPreStaking`: the total adjusted liquidity from applying all factors, but with `stakingBoost = 1` (i.e. `BRF = ratioFactor`). Let's say the result was $200M.\n\nWe will need to apply a yet unknown stakingBoost so that:\n```STAKERS_SHARE = (finalLiquidity - liquidityPreStaking) / finalLiquidity```\n\n... which can also be stated as:\n```finalLiquidity = liquidityPreStaking / (1 - STAKERS_SHARE)```\n\nIn our example:\n```finalLiquidity = $200M / (1 - 45000/145000) = $290M```\n\nWe may apply any temporary `tempStakingBoost > 1` to `{BAL & uncapped_token}` pairs from non-shareholder LPs, resulting in a `tempLiquidity`. Let's say our result was $230M. This would mean the `tempStakingBoost` increased the adjusted liquidity in $30M, while what we actually want is an increase of $90M.\n\nNow to get the desired `stakingBoost`, we only need to \"stretch\" or \"shrink\" the `tempStakingBoost` according to the ratio between the two liquidity adjustments (desired & temporary):\n\n```\n(finalLiquidity - liquidityPreStaking) / (tempLiquidity - liquidityPreStaking) = stakingBoost / tempStakingBoost\n```\n... which in our example would result in:\n```\n(290 - 200) / (230 - 200) = stakingBoost / tempStakingBoost\nstakingBoost = 3 * tempStakingBoost\n```\n\n# Shareholder Addresses\n\nAn important aspect of this proposal is that Balancer Labs shareholders (investors, advisors and founders) seem aligned with the spirit of the proposal: to accelerate governance rights distribution. In order to achieve this goal, their wallets will be excluded from participating in liquidity staking. This restriction doesn't apply to eventual BAL they hold that are unrelated to their shareholder allocations, for instance BAL bought on the market or earned through being LPs with tokens other than their BAL shareholder allocation.\n\n[Here is the complete list of shareholder addresses to be excluded from liquidity staking](https://github.com/balancer-labs/bal-mining-scripts/blob/liquidity-staking/src/users.ts).\n\nNote: wallets currently tagged as \"Balancer: Shareholder XX\" on Etherscan are actually *vesting smart contracts* which hold mostly locked (i.e. yet unvested) BAL. Vesting happens continuously and linearly over a period of 3 years which started at token launch (2020-06-20). When finally vested (i.e. free to transfer), BAL can only be withdrawn to the respective beneficiary address of each vesting contract. The addresses listed above are the 51 unique beneficiaries of the 51 vesting contracts. All the BAL balance they already hold is vested.\n\nThe community is willing to tolerate up to about 10k BAL per week per shareholder being sent to centralized exchanges as they are cognizant of shareholders also seeking to deleverage their BAL positions over time, without attempting to subvert the exclusion list. In case some large BAL balances move to third-party custody solutions held in segregated addresses or to multisig wallets (both situations are likely to happen), the current list may be updated to reflect those new shareholder addresses as also excluded from liquidity staking.\n\nThe community will have the prerogative... (10104 total length)",
+    "choices": [
+      "Approve",
+      "Reject"
+    ],
+    "scores_total": 192951.88669393124,
+    "scores": [
+      189383.3426799447,
+      3568.5440139865486
+    ],
+    "type": "single-choice",
+    "start": 1598112000,
+    "end": 1598198400,
+    "author": "0x107174D70b33523E83711EA4C3F4229cdB8A7Cb1",
+    "space": {
+      "id": "balancer.eth"
+    }
+  },
+  {
+    "id": "QmNTAyBb1ZpyiR8gfGqHsBHwoedzdvkpf53VWaJQQysWHV",
+    "title": "Increase MKR from Cap3 to Cap4 ($10m -> $30m)",
+    "body": "[This proposal is also on Balancer's forum](https://forum.balancer.finance/t/proposal-increase-mkr-captier-from-cap3-to-cap4-10m-30m/233).\n\n**TL:DR**\n\nAs outlined in the [new whitelisting process](https://forum.balancer.finance/t/proposal-to-update-the-whitelist-process/217), this is a proposal to increase the MKR capFactor from cap3 to cap4 ($10M -> $30M). MKR has exceeded $10m adjusted liquidity for a period of time. MKR bring good liquidity to the Balancer ecosystem.\n\n---\n\n**The Proposal**\n\nThis is a proposal to increase the MKR cap Tier from cap3 to cap4 ($10M -> $30M). MKR currently has $16M in adjusted liquidity and has probably surpassed it's $10M cap for a month.\n\nMKR brings useful liquidity to the Balancer ecosystem. Before, Uniswap used to be the most popular DEX for trading MKR.\n\n---\n\n**What is MKR?**\n\nMKR is a DeFi large cap, it currently has a $600M market cap. There's currently $1.5B locked in MakerDAO, and 425M DAI has been minted.\n\nSCD (Single Collateral DAI) was launched in December 2017. MCD (Multi Collateral DAI) was launched in November 2019.\n\nMakerDAO is a decentralized credit platform on Ethereum that supports DAI, a stablecoin whose value is pegged to USD. Anyone can use Maker to open a Vault, lock in collateral such as ETH, BAT, or WBTC ... and generate Dai as debt against that collateral. Dai debt incurs a stability fee (i.e., continuously accruing interest), which is paid upon repayment of borrowed Dai. DAI is collected as system surplus, and then used in FLAP auctions to burn MKR.\n\nMKR can also be used as a governance token to govern the system. MKR holders also act as the last line of defense in case of a black swan event. If system-wide collateral value falls too low too fast, MKR is minted and sold on the open market to raise more collateral, diluting MKR holders.\n\n---\n\n**Footnotes:**\n\nOriginal CapFactor Proposal: https://forum.balancer.finance/t/capfactor-capping-eligible-liquidity-to-10m-per-token/56\nNew Whitelisting Process: https://forum.balancer.finance/t/proposal-to-update-the-whitelist-process/217",
+    "choices": [
+      "Increase MKR cap to $30M",
+      "Keep MKR cap at $10M",
+      "Reduce MKR cap to $3M"
+    ],
+    "scores_total": 396810.6023062053,
+    "scores": [
+      220016.89590116247,
+      176658.18520737215,
+      135.5211976707596
+    ],
+    "type": "single-choice",
+    "start": 1598112000,
+    "end": 1598198400,
+    "author": "0x107174D70b33523E83711EA4C3F4229cdB8A7Cb1",
+    "space": {
+      "id": "balancer.eth"
+    }
+  },
+  {
+    "id": "QmfQvMzyj2THiLhS6Jx4MSETq7c1D4SCEz9xMyVPGYf1tA",
+    "title": "Proposal to Remove DZAR from Whitelist",
+    "body": "[This proposal is also on Balancer's forum](https://forum.balancer.finance/t/dzar-removal-from-whitelist-proposal/252).\n\nAfter some explanations from what looked like DZAR team, my conclusion about the discussion we had in bal-detectives channel on Discord is:\n\n\"DZAR tokens are backed by nothing. Buyers have no claims to Digital Rand (Pty) Ltd's assets which own the deposits that you make to get DZAR. The DZAR peg to ZAR (fiat currency) is kept at voluntary efforts of Digital Rand (Pty) Ltd. and the pegging can be terminated at any point in time at discretion of Digital Rand (Pty) Ltd.\"\n\nDZAR can print unlimited amounts of tokens at their sole discretion.\n\nDZAR gets pooled in many 8 asset pools. These pools are as safe as the weakest currency, DZAR going to 0 will drain these pools to 0. There are millions in these pools. If DZAR prints unlimited amount of tokens, it will drain all these pools, generate large losses and bad publicity.\n\nI think that encouraging DZAR liquidity on Balancer creates a big risk for potential liquidity providers joining these pools.",
+    "choices": [
+      "Approve",
+      "Reject"
+    ],
+    "scores_total": 147984.70257888918,
+    "scores": [
+      147907.23888140984,
+      77.46369747936534
+    ],
+    "type": "single-choice",
+    "start": 1598112000,
+    "end": 1598198400,
+    "author": "0x107174D70b33523E83711EA4C3F4229cdB8A7Cb1",
+    "space": {
+      "id": "balancer.eth"
+    }
+  },
+  {
+    "id": "QmWTS3nSkSk2nQLVcbQSiWdbHCyBzjtmg6BTCsRN4Bmc4M",
+    "title": "Proposal to decrease RPL from Cap3 to Cap2 ($10M -> $3M)",
+    "body": "[This proposal is also on Balancer's forum](https://forum.balancer.finance/t/proposal-to-decrease-rpl-from-cap3-to-cap2-10m-3m/261).\n\nThis proposal is adapted from [its original](https://forum.balancer.finance/t/proposal-for-a-1m-cap-for-rpl/250) just so that the change would be a valid one according to the current rules described [here](https://forum.balancer.finance/t/proposal-to-update-the-whitelist-process/217).\n\n======\n\nRPL appears to be a coin with a purpose and a real use case.\nThe $26,465,785 70 RPL - 30 WETH pool is one of the biggest on Balancer and earns BAL at a rate of $10m worth of BAL/year.\n\nUnfortunately it generates very little volume with 24h volumes oscilating in low tens of thousands of USD, last 24h volume: $30,891\n\nA $2m pool would be enough to facilitate low slippage trading for such volumes so I propose reducing the BAL rewards cap to reduce from 10m *to 3m*. I think that the $10m yearly worth of rewards could be used to encourage other, more useful liquidity.\n\nOn top of the low trading volumes and low interest from traders, my subjective opinion is that the valuation is artificially inflated, I’m not happy about heavy concentration of this pool in hands of a single liquidity provider (90% single LP, recently >97%). CMC shows that this coin trades >$900k on Bilaxy and >300k on LBank within 24h which I find hard to believe. https://coinmarketcap.com/currencies/rocket-pool/markets",
+    "choices": [
+      "Reduce RPL cap to $3M",
+      "Keep RPL cap at $10M",
+      "Increase RPL cap to $30M"
+    ],
+    "scores_total": 200119.77013437697,
+    "scores": [
+      198679.11230243967,
+      103.70639161100584,
+      1336.9514403263358
+    ],
+    "type": "single-choice",
+    "start": 1598112000,
+    "end": 1598198400,
+    "author": "0x107174D70b33523E83711EA4C3F4229cdB8A7Cb1",
+    "space": {
+      "id": "balancer.eth"
+    }
+  },
+  {
+    "id": "QmRMxkq98LJhFqJAC5GNCHrCwe3FFzxveb7MPzLYDCKT49",
+    "title": "YIP-1: Proposal Mechanics",
+    "body": "Trent Elmore, Brock Elmore, Will Price, Clinton Bembrey, and Dan Elitzer propose the following items to serve as proposal mechanics during the transition from YAMv2 to YAMv3. Should this proposal be passed, past and future proposals that do not conform to these mechanics will be considered invalid.\n\nWhile the original launchers of Yam will be submitting proposals, this framework is intended to make clear that anyone meeting the minimum requirements is able to submit proposals, some of which may supersede ours. The power and value of YAM lies in the YAM community, and we are excited to see what the community brings to the table in this interim period and in YAMv3.\n\nIt should be noted that any proposal may not be implemented without approval from the YAM community. \n\nWe're also thrilled and humbled by the support we've received from many in the DeFi community that have rallied behind us. One special shout out we'd like to give is to the Balancer and Snapshot Labs teams who built and are hosting this governance portal. This was something they did not have to do but graciously offered as we sought ways to limit our influence over this process.\n\nItem 1:\n\nWe propose a 3 day minimum voting period, with a maximum voting period of 7 days. This will ensure tokenholders have adequate time to assess proposals and vote, while also ensuring an efficient process.\n\nItem 2:\n\nWe propose all proposals must have a deadline prior to September 7, 2020, to ensure adequate time for code implementation prior to audit. This means the latest that a proposal can be submitted is September 4, 2020.\n\nItem 3:\n\nWe propose that all proposals not approved by the deadline must be resubmitted in YAMv3 governance to be considered for implementation.\n\nItem 4: \n\nWe propose that a minimum of 100 YAMv2 be required to submit a proposal. This is to prevent proposal overload and ensure an efficient V2 to V3 governance process.\n\nItem 5:\n\nWe propose to utilize the 4% quorum requirement initially set in V1 for approval of YAMv2 governance decisions.\n\nItem 6:\n\nWe propose that when submitting a proposal, a block height for a snapshot of balances must be chosen. The snapshot of balances will serve as ground truth for voting power. This block must be the current block at the time of proposal start time (+/- 15 minutes). Any proposal found not to do this will be disregarded and considered invalid, even if it achieves sufficient votes.\n\nItem 7:\n\nWe propose that in the event of conflicting approved proposals, priority will be given to the proposal that was approved most recently. \n",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 800036.5926578328,
+    "scores": [
+      795087.2226219348,
+      4949.370035897872
+    ],
+    "type": "single-choice",
+    "start": 1598302800,
+    "end": 1598562000,
+    "author": "0x683A78bA1f6b25E29fbBC9Cd1BFA29A51520De84",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "Qmc1GpiLaPXRLsXw31R1RznKrMTnzmonbSn2kCXVwxUWTV",
+    "title": "YIP-2: YAMv3 Initial Parameters",
+    "body": "Trent Elmore, Brock Elmore, Will Price, Clinton Bembry, and Dan Elitzer propose the following measures to be implemented for the launch of YAMv3 based on discussions with the YAM community over the past two weeks. Our motivation for submitting this proposal is to ensure an efficient transition from V2 to V3 that addresses mission-critical issues in the most fair way for the largest amount of the community possible. We believe this is the best path forward, but it is up to the community to decide, this is not an exhaustive list of possible changes, and we do expect additional proposals to be submitted.\n\nAs mentioned in the Proposal Mechanics proposal, anyone can submit further proposals which may supersede and/or iterate upon the below.\n\nItem 1: Minor Protocol Updates\n\nWe propose the following protocol updates. While there are many ideas on how the Yam protocol can be improved, we find it prudent to focus on minor updates that improve upon V1 with limited overhead.\n\n- Update reserve asset to yUSD (yyCRV), which has higher yield potential than yCRV\n- Replace YAMv1/yCRV sync() call on Uniswap V2 with YAMv3/yUSD sync() call\n- Hardcode proposal (50K pre-rebase) and quorum (200k pre-rebase) thresholds\n- Make voting period 2 days instead of 3 for quicker governance action\n- Complete audit of fully functional YAMv3 protocol\n\nItem 2: YAMv3 Incentivization Distribution\n\nWe propose a single farming pool be established on the YAMv3/yUSD (yyCRV) Uniswap V2 LP pool. The first week of incentives will begin one hour after V3 launch and total 330,000 YAMv3. Incentives will be reduced by 30% each week, resulting in a total of 1.1MM YAMv3 tokens distributed to stakers. \n\nWe also propose a 1MM YAMv3 community fund, held outside the reserve in a separate community fund contract. This fund will be controlled by V3 governance, will not impact quorum requirements for voting, and can be used as the community sees fit. Uses may include but are not limited to new incentivized pools or ecosystem development initiatives.\n\nTL;DR:\n- YAM/yUSD LP Incentivized  Staking Pool, initial weekly issuance of 330k YAMv3, decreasing 30% each week, totaling 1.1MM.\n- 1MM YAMv3 Community Fund\n\nItem 3: YAMv2 to YAMv3 Migration\n\nWe propose a 1:1 migration for YAMv2 holders. A migration contract with no deadline will be created, which will allow YAMv2 holders to burn their YAMv2 tokens in exchange for YAMv3 tokens.\n\nTL;DR:\n- 1:1 migration from V2 to V3 via migration contract\n\nItem 4: Delegator Rewards\n\nWe propose utilizing a snapshot taken at the time of the #saveyam governance proposal to reward delegators utilizing a “flat and scaled” reward model. The list of delegators can be found here: https://raw.githubusercontent.com/yam-finance/yam-protocol/master/yam_delegator_snapshot_10650187_draft.json\n\nThe rewards will also be used to bring the total supply of YAMv3 to a round number, by the following calculation:\n\n (YAMv3 Total Supply) - (Community Fund) - (LP Pool Incentives) -  (YAMv2 Total Supply) = (Delegator Rewards)\n\nTotal delegator rewards will be approximately 173,588.383 YAMv3. We propose to distribute half (approximately 86,794.192) of these rewards on a flat basis to the 3,173 delegators, rewarding each delegate with approximately 27.354 YAMv3 tokens. The remaining 86,794.192 YAMv3 tokens will be distributed to delegators in proportion to their percentage of total votes delegated. This structure compensates small holders for their efforts and incurred transaction fees, as well as compensating all holders for their proportional impact.\n\nThese delegator rewards will be fully vested on V3 launch.\n\nTL;DR:\n- Approximately 173k in rewards, half distributed on flat scale to all delegators, half distributed proportional to voting contribution\n\nProposal Summary:\n\nTotal V3 Supply: 6,000,000\n\nProtocol Updates: \n- Update reserve asset to yUSD (yyCRV), which has higher yield potential than yCRV.\n- Call sync() on Uniswap V2 YAMv3/yUSD pool\n- Hardcode proposal (50K) and quorum (200k) thresholds\n- Make voting period 2 days instead of 3\n- Complete audit of fully functional YAMv3 protocol\n\nFarming and Incentives:\n- YAM/yUSD LP Pool, receiving 330k YAMv3, decreasing 30% each week, totalling 1.1M.\n- 1M YAMv3 Community Fund\n\nMigration: \n- 1:1 migration from V2 to V3\n\nDelegator Rewards:\n- Approximately 173k in rewards, half distributed equally to all delegators, half distributed according to a linear scale of voting contribution\n\nOnce again, this proposal is made by the individuals who originally launched YAM, and reflects our thoughts on how to best proceed. Ultimately, it is up to the community of YAM to decide, and proposals meeting the minimum requirements may supersede or iterate upon this proposal.\n",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 1263284.2131951342,
+    "scores": [
+      1071220.685702406,
+      192063.52749272768
+    ],
+    "type": "single-choice",
+    "start": 1598302800,
+    "end": 1598734800,
+    "author": "0x683A78bA1f6b25E29fbBC9Cd1BFA29A51520De84",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmdSZjHDZL1nGHRKq6G9wVwtxfHtBEu9HMgbK46bvhXZyX",
+    "title": "YIP-3: Add ETH-YAMv3 Uniswap Pool to the initial Distribution",
+    "body": "This proposal amends item 2 of the YIP-2 proposal to add the ETH-YAMv3 Uniswap V2 Pool to the initial Incentivization Distribution of YAMv3. If passed, it will split the initial 330,000 YAMv3 rewards in the following manner:\n\n* YAMv3/yUSD Uniswap V2 Pool: 165,000 YAMS.\n* ETH-YAMv3 Uniswap V2 Pool: 165,000 YAMS.\n\nThe reasoning for this change is to facilitate a one step YAMv3-ETH bridge and also to promote arbitrage trading between these two pairs. \n\nThe rest of the YIP-2 proposal would remain the same, meaning Incentives will be reduced by 30% each week for each pool, totaling a 1.1MM YAMv3 tokens to be distributed to stakers.\n\nThis proposal will go live 1 block after its parent YIP-2 proposal and it has a 3 day duration for voting. \n\n**TL;DR:**\n* Change YIP-2 Proposal to split 50%-50% the initial 330,000 YAMv3 of the Incentivization Distribution between the ETH-YAMv3 and the YAMv3/yUSD Uniswap V2 Pools.\n* Everything else in the YIP-2 proposal remains intact. ",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 481493.3199911227,
+    "scores": [
+      30864.903635067916,
+      450628.4163560547
+    ],
+    "type": "single-choice",
+    "start": 1598302860,
+    "end": 1598734860,
+    "author": "0x17F9e68767a4A3990F3F2C606855178CB41F6a3A",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmZdxDV3NuLzWdDPx4Bwi9zrcguCKkw2zUSLXWZmyBpNgg",
+    "title": "Send YAM into space",
+    "body": "The proposal consists in allocating resources for SpaceX services to launch a cargo of yam (or any other reasonable amount of yam) into space, when YAM market capitalization will reach 1 trillion dollars.",
+    "choices": [
+      "Yes for the space program.",
+      "Nope."
+    ],
+    "scores_total": 608.3736037012466,
+    "scores": [
+      84.97595100315829,
+      523.3976526980882
+    ],
+    "type": "single-choice",
+    "start": 1598144400,
+    "end": 1598576400,
+    "author": "0x0598D2c365A5661032a91Da03ED74E298ceEA67b",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "Qmc9fAMNHkGoDMw7ujMC5xrV8k92PiA7QuezPNhmdQFDeW",
+    "title": "YIP-5: YAMv3 3-day Migration Period",
+    "body": "We propose a token migration from v2 to v3, in which the migration contract is only active for 3 days. After the 3-day period, no YAMv2 tokens can be migrated to YAMv3.\nThis approach is similar to the previous migration from v1 to v2. This approach can give us certainty regarding the total supply of YAMv3.",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 512405.41862990195,
+    "scores": [
+      100282.8427368198,
+      412122.5758930821
+    ],
+    "type": "single-choice",
+    "start": 1598302860,
+    "end": 1598734860,
+    "author": "0xAA33F700653c8bEC7b731B9DE3E81BfE53B8b8e5",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmShrmWxTZdLfrF926wqmY7RLsNMGoWRwfLyvbd96YZjin",
+    "title": "YIP-6: Proposal Conflict Resolution ",
+    "body": "I, Brock Elmore, propose the following:\n\nItem 1: Conflicting Proposal With Same End Time goes to affirmative vote count\n\nIf two proposals that conflict with each other have the same end date, and both pass and reach quorum, the winner shall be decided by the proposal that has the greater number of votes in the affirmative. \n\nItem 2: Furthermore, in the case of same affirmative vote count, both proposals are invalid\n\nIf two proposals that conflict with each other have the same end date, and both pass, reach quorum, and have the same number of affirmative votes, both proposals are considered invalid.\n",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 845409.5850960582,
+    "scores": [
+      842931.180228011,
+      2478.4048680472706
+    ],
+    "type": "single-choice",
+    "start": 1598302800,
+    "end": 1598562000,
+    "author": "0x683A78bA1f6b25E29fbBC9Cd1BFA29A51520De84",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmYpphXowNuyum74hPwAx6JwRyuE2v2XmQbRofrPbdHofM",
+    "title": "Delegator Reward",
+    "body": "Mint YAM v3 equivalent to the number of tokens that did not get migrated from YAM v1 to YAM v2 ( out of 5M ) and distribute it to addresses proportionally who delegated to save YAM. ",
+    "choices": [
+      "YES",
+      "NO"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598356800,
+    "end": 1598616000,
+    "author": "0xb2ab92049645D0395D17b1d0B8152De9A7032945",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmadvwZAU89wVLNd4KCVvq6iNmtZgECd3qBQbao1FB5whp",
+    "title": "Limiting the LP Incentives in v3",
+    "body": "We propose limiting the total number of YAMv3 tokens distributed to YAMv3 liquidity providers to be no greater than 10% of the YAMv2 supply.\n\nThe circulating supply of YAMv2 tokens is approximately 3,726,411. YIP-2 (https://snapshot.page/#/yam/proposal/Qmc1GpiLaPXRLsXw31R1RznKrMTnzmonbSn2kCXVwxUWTV) would inflate the token supply by almost 30% (1,100,000 YAMv3 tokens). \n\nWhile we acknowledge the importance of incentivizing liquidity provision, early investors and early token holders should not be heavily diluted. Therefore, we propose limiting the total number of YAMv3 tokens distributed to YAMv3 LPs to be no larger than 10% of the YAMv2 supply. This would keep the doors open for the public, while protecting the current token holders from inflation.\n\nFor example, if the migration is 1:1, the total number of YAMv3 tokens distributed to YAMv3 LPs will be capped at approximately 372,641.",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 357588.28345898417,
+    "scores": [
+      11848.76606171095,
+      345739.5173972733
+    ],
+    "type": "single-choice",
+    "start": 1598302800,
+    "end": 1598745660,
+    "author": "0xAA33F700653c8bEC7b731B9DE3E81BfE53B8b8e5",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmUXiSRgL3TwQ1Fw8U7ShGij6vDVcgQ5aFrwzSDdcwQ34b",
+    "title": "Delegators get rewarded from the treasury",
+    "body": "25% of value to reward the delegators proportionally following this snapshot: https://raw.githubusercontent.com/yam-finance/yam-protocol/master/yam_delegator_snapshot_10650187_draft.json but rewarded in CRV from the treasury so not to dilute holders and not reduce conversion.  \n\nCRV rewards would then likely buy back in YAM lifting price keeping everyone happy. Due to the failings in the code I think it is better the delegators are made whole from the treasury.",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 247314.70968491034,
+    "scores": [
+      78374.0666879036,
+      168940.6429970067
+    ],
+    "type": "single-choice",
+    "start": 1598223600,
+    "end": 1598482800,
+    "author": "0xaeAecAe60b207A022Ff2eDcD3ec2643d14AbE856",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmPa5eaG7Eivr3bqKc4BjiFx8MYF82WjqYxcw2vCAj4QJN",
+    "title": "Raise peg to USD 167.66",
+    "body": "Several YAM harvesters and investors suffered significant losses following  a disclosure from the developer team of a bug; as a result the price dropped from an all time high of 167.66$ to 11$, to then tumble to 1$ and below.\nSince this sudden drop was caused not by the intrinsic rebase mechanisms but rather by developers' mistake, it would seem fair to either raise the peg to $167.66 or, since 10.33 YAM v1 could only generate 1 YAM v2, $167.66*10.33 = $1731.9278.",
+    "choices": [
+      "Leave peg at $1.00",
+      "Raise peg to $167.66",
+      "Raise peg to $1731.9278"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598356800,
+    "end": 1598616000,
+    "author": "0x5139C2D023c638A5F5190858b2BA4886873Ed027",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmUcdzF96Je51YXTnxPmvcwkosui6nA8zcnr2qPKvCdCdY",
+    "title": "YAM Vx Proposal",
+    "body": "Just two proposes\n\n1、When rebase additional issue，the holder have less yam token ，more percent of additional issue he have.\n\n2、When rebase deflation，the holder have more yam token ，less percent of deflation he have.\n\nInitiator : 33357\n\n//\n\n两条建议：\n\n1、当YAM通过rebase增发时，持有YAM越少的人增发的比例越高。\n\n2、当YAM通过rebase通缩时，持有YAM越多的人通缩的比例越少。\n\n发起者：33357",
+    "choices": [
+      "for / 同意",
+      "against / 反对"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598356800,
+    "end": 1598616000,
+    "author": "0x1f2479ee1b4aFE789e19D257D2D50810ac90fa59",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "Qmcu2TaBUobiC1uqsZru7gtDaz1foQxZjN6ZGCmeGQC6NQ",
+    "title": "Create 80/20 YAM/WETH Balancer Pool To Use for Governance",
+    "body": "Summary:\nThis proposal would shift governance away from YAM to instead use BPT from a balancer pool with 80% YAM/20 WETH similar to Aave's new governance system outlined here - https://medium.com/aave/aavenomics-eeab650cccc2. This proposal would also add functionality to the rebaser to call gulp() on this pool during rebase. This would make liquidity added to the pool safe from losing funds during rebase. This proposal does not include any additional incentives to be provided to LPs on this pool.\n\nReasoning:\nThis would massively increase YAM trading liquidity over the current system where people must hold YAM in their wallet to participate in governance. With a modest fee of 1% on the balancer pool, LP's can reasonably expect a three figure APY from fees alone. It would be easy to get YAM whitelisted for weekly BAL rewards as well. Calling gulp() during rebase will protect LP funds from being stolen as is typically the case with rebasing tokens on balancer. \n\nThis would be a novel approach to governance but the benefits are significant. Governance participants would see a very high APY while significantly increasing YAM liquidity for trading and it requires no incentive on the part of YAM protocol.",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 2033.6742802366928,
+    "scores": [
+      12.378306900540387,
+      2021.2959733361524
+    ],
+    "type": "single-choice",
+    "start": 1598320800,
+    "end": 1598788800,
+    "author": "0x512fce9B07Ce64590849115EE6B32fd40eC0f5F3",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmPGriN6d3TuWhFunvj3Qyf8ZMBhB3pBidDiWRg9KSweHV",
+    "title": "YIP-10: Use 80/20 Balancer Pool for Governance",
+    "body": "This proposal would shift governance away from YAM to instead use BPT from a balancer pool with 80% YAM/20 WETH similar to Aave's new governance system outlined here - https://medium.com/aave/aavenomics-eeab650cccc2. This proposal would also add functionality to the rebaser to call gulp() on this pool during rebase. This would make liquidity added to the pool safe from losing funds during rebase. This proposal does not include any additional incentives to be provided to LPs on this pool.\n\nReasoning:\nThis would massively increase YAM trading liquidity over the current system where people must hold YAM in their wallet to participate in governance. With a modest fee of 1% on the balancer pool, LP's can reasonably expect a three figure APY from fees alone. It would be easy to get YAM whitelisted for weekly BAL rewards as well. Calling gulp() during rebase will protect LP funds from being stolen as is typically the case with rebasing tokens on balancer.\n\nThis would be a novel approach to governance but the benefits are significant. Governance participants would see a very high APY while significantly increasing YAM liquidity for trading and it requires no incentive on the part of YAM protocol.",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 692.0264712124642,
+    "scores": [
+      0,
+      692.0264712124642
+    ],
+    "type": "single-choice",
+    "start": 1598319900,
+    "end": 1598702400,
+    "author": "0x512fce9B07Ce64590849115EE6B32fd40eC0f5F3",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmW9RavjUbQ6mFzRL94TPYSgrTmiALtLqvNV2FRAndrqpy",
+    "title": "Urgent Proposal To Establish A YIP(YAM Improvement Proposal) System Before Any Other Proposal",
+    "body": "Hi Yamers, my nanme is Jimmy I am a system engineer. YAM first come to my attention after the price crash due to bugs in a smart contract. I have been closely following YAM development including the V2 migration and this latest governance proposal.\n\nIn order for YAM to move forward, a good YIP(YAM Improvement Proposal) system is urgently needed. While I see most of the new proposal here in one or another way asking for support for their proposal on governance system and etc... I strongly believe that the first and most important thing to do now is \"TO ESTABLISH A YIP SYSTEM BEFORE MOVING FORWARD TO ANY OTHER PROPOSAL\".\n\nAfter some discussion I come to the following proposal :\n\n1) We Urgently Need To Establish A YIP System Before Proposing Any New Proposal\n\nThe main reason behind this is that the YIP system serve as a backbone for any new proposal before they can be agreed and implemented by the community.  Without a YIP system anyone can suggest a new proposal and things will become complicated fast before any solution can be found. As a proof of my point there are around 40 new proposals which is to many for the community to digest at the time of my writing.\n\n2) Any New Proposal Must Obtain Simple % of Vote Before Becoming Official Suggested Proposal\n\n3) Official Suggested Proposal Must Obtain Certain % of Vote And Cannot Exceed Certain % of Rejection Before Qualified As An Official Proposal\n\nThe 2 tiers system that I proposal above should be able to eliminate the weak proposal and allow majority community members to focus their precious time on studying only on the official suggested proposal (rather than all new proposals) before they vote to accept or reject a proposal.\n\nAs you can see I did not list specific % of vote require in 2) and 3) above, this is because I strongly believe that the community should be allowed to decide this after this proposal had been accepted.\n\nLastly, please give me your support and vote to make YAM a better system. Thank you.",
+    "choices": [
+      "Yes, Establish YIP Sytem",
+      "No, YIP System Is Not Needed"
+    ],
+    "scores_total": 2985.0783373403833,
+    "scores": [
+      64.52507894814886,
+      2920.553258392235
+    ],
+    "type": "single-choice",
+    "start": 1598184000,
+    "end": 1598702400,
+    "author": "0xF354800587aA33CCC37De4225Abc4a9c221c5F1B",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmZtQRNvvqsH3DY12uZQzndmXUE4PLPu9JBEEXB4TYegqr",
+    "title": "Reduce the YamV2 supply by denomination",
+    "body": "YamV2 can act as the governance token and for this to gain value overtime and people holding it as an asset, we need to reduce the supply. It can be done by denominating in the ratio of 1:10\n\nExample, the total supply can be reduced 10 times, and each of them holding the token will be reduced 10 times but the value will be the same. If I have 10 tokens worth $10, I can have the same value with 1 token.\n\nIn this way, it will meet more demand, supporting the protocol as whole. We have a huge community and as investors we would like to see YamV2 gaining value upon adoption.",
+    "choices": [
+      "Yes",
+      "No"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598263200,
+    "end": 1598529600,
+    "author": "0x6E1368C42c9cB0a51A55228BF2de2c4738e83A60",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmSDiRWubMPzVQShqEAAtCPgzBrht4LnPd5G5pv1oN17UA",
+    "title": "Providing insurance to fund",
+    "body": "In order to attract a larger audience of investor I was thinking to myself what are to most important attributes for me to choose a place to invest in. It comes basically down to yield, safety and usability. I thing we are golden and yield and usability. The part we have to work on is safety. So here comes my proposal. \n\nIt would be nice once we are audited to buy an insurance for the vault and pay it with a part of the rewards. Me myself would be more than happy to cut back on some rewards and to know that my funds are safe. I didnt saw anything like that in the space ans I think we can exploit this marketing wise like crazy. The first insured yield farming vault",
+    "choices": [
+      " Yes, Insurance would be great",
+      "No"
+    ],
+    "scores_total": 1.375828136289922,
+    "scores": [
+      1.375828136289922,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598356800,
+    "end": 1598616000,
+    "author": "0x4AdE56d354a5795B7D5657cA27BfDa44eBF08B55",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmcyZ9sq3puGioLDV2cEuxsFu4DBaYPgjJ2iJV1GX78vJU",
+    "title": "V3 LP on Mooniswap",
+    "body": "I propose that the version 3 farms include Mooniswap liquidity pools.\n\nMy reasoning for this is three-fold:\n\n1] Mooniswap promises 50-200% greater returns for liquidity providers compared to uniswap.\n\n2] Mooniswap protects liquidity providers from arbitrage and front-running attacks. We saw this during the V1 Yam speculative bubble.\n\n3] Providing liquidity on Mooniswap will allow the community to farm 1\" governance tokens and expand the influence of yam governance to other components of the DeFi market.\n\nhttps://medium.com/@1inch.exchange/1inch-revolutionizes-automated-market-maker-amm-segment-with-mooniswap-e068c20d94c\n\nAs an addendum - if this proposal passes, I suggest that we engage with the 1\" team to determine how their vision may or may not be commensurate with the Yam community and whether we can receive special incentives, such as a greater share of the 1\" governance token. It may be the case that 1\" is afraid of failed governance but if Yam proves to be an effective governing body we may be seen as a vested interest/custodian in the success of mooniswap and related services.\n",
+    "choices": [
+      "Yes, V3 should contain Mooniswap Pools",
+      "No, V3 should not contain Mooniswap Pools"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598356800,
+    "end": 1599048000,
+    "author": "0x65f4424CEa0593c53Fe4E34d55455238BD058a6c",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmWuYUa3HUcqtM5zD4hyrQbCXf5Ceh9AkvJD2siFUYYkAs",
+    "title": "YIP : Farms on Mooniswap",
+    "body": "I propose that the version 3 farms include Mooniswap liquidity pools.\n\nMy reasoning for this is three-fold:\n\n1] Mooniswap promises 50-200% greater returns for liquidity providers compared to uniswap.\n\n2] Mooniswap protects liquidity providers from arbitrage and front-running attacks. We saw this during the V1 Yam speculative bubble.\n\n3] Providing liquidity on Mooniswap will allow the community to farm 1\" governance tokens and expand the influence of yam governance to other components of the DeFi market.\n\nhttps://medium.com/@1inch.exchange/1inch-revolutionizes-automated-market-maker-amm-segment-with-mooniswap-e068c20d94c\n\nAs an addendum - if this proposal passes, I suggest that we engage with the 1\" team to determine how their vision may or may not be commensurate with the Yam community and whether we can receive special incentives, such as a greater share of the 1\" governance token. It may be the case that 1\" is afraid of failed governance but if Yam proves to be an effective governing body we may be seen as a vested interest/custodian in the success of mooniswap and related services.",
+    "choices": [
+      "Yes, V3 should have mooniswap pools",
+      "No, V3 should NOT have mooniswap pools"
+    ],
+    "scores_total": 10.716123837369947,
+    "scores": [
+      10.716123837369947,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598356800,
+    "end": 1599048000,
+    "author": "0x65f4424CEa0593c53Fe4E34d55455238BD058a6c",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmTCXW2bhETiwHoDqeyxoDA4CwjURyfc6T4fAJLGz3yKj9",
+    "title": "YIP-9: Add support for calling sync() on the ETH-YAMv3 Uniswap pool",
+    "body": "Summary:\nThis proposal would add functionality to the rebaser to call sync() on the ETH-YAMv3 Uniswap pool during rebase. This would make liquidity added to that pool safe from losing funds during rebase. This proposal does not include any additional incentives to be provided to LPs on this pool.\n\nReasoning:\nDue to the fact that Uniswap tracks token balances internally, assets that rebase (like YAM) need to explicitly call sync() during rebase or a portion of the assets pooled can be stolen after rebase. Since ETH is the top pooled asset on Uniswap, it makes sense that we would want to encourage liquidity on the ETH-YAMv3 pool as well.\nYAMv1 saw people adding liquidity on the YAMv1-ETH pool (>$100k worth at its peak), unknowingly putting those funds at risk.",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 289732.65480944974,
+    "scores": [
+      289732.65480944974,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598373000,
+    "end": 1598805000,
+    "author": "0xEC3281124d4c2FCA8A88e3076C1E7749CfEcb7F2",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmUntcMz42wQeeSr1DiYcc6j1iukn6ua2TPtyv4h8TZRZE",
+    "title": "YIP-100 : Require 1 YAM burn for proposals",
+    "body": "The time and attention of YAM holders is valuable. Something should be given up to submit a proposal in order to reduce the waste of time of YAM holders.\n\nYAM holders do not have the option of ignoring proposals as any proposal could be negative for the future of YAM and need to be voted down.\n\nTherefore, making submitting a proposal incur a cost is needed to prevent too many proposals from being submitted.\n\nA fresh proof-of-burn of 1 YAM should be required with each proposal submission to make it a valid submission. The Ethereum transaction ID of this burn should be attached to the proposal text. Burning involves transfer of 1 YAM or more to this Ethereum address:\n\n0x000000000000000000000000000000000000AAAA\n\nviewable at:\n\nhttps://etherscan.io/address/0x000000000000000000000000000000000000AAAA\n\nNote that the traditional burn address:\n\n0x0000000000000000000000000000000000000000\n\nis not being used, as many Ethereum wallets will not allow a transfer to it.\n\nIn flight proposals which are submitted before YIP-100 but approved after this YIP is approved can alternatively post proof-of-burn in well-known alternative locations such as the YAM discord.",
+    "choices": [
+      "Yes, require fresh proof-of-burn of 1 YAM with all future proposals",
+      "No, reject this proposal"
+    ],
+    "scores_total": 318639.82352464757,
+    "scores": [
+      306042.65119752084,
+      12597.172327126682
+    ],
+    "type": "single-choice",
+    "start": 1598373600,
+    "end": 1598655600,
+    "author": "0xf75fcD9849d3365d436D0CD889Ed500150C9482A",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmQhFu6miTLtmNyRtCGFXvoFw54VmtkX2chDeUdfFXAtx9",
+    "title": "YIP-11; 1% of YAM Treasury Inflows => Gitcoin Grants Matching Pool",
+    "body": "Note 1: This proposal is being resubmitted [after the original proposal was marked as 'noncompliant' due to a technicality](https://discordapp.com/channels/743654257642700911/743654718664081492/747856405704343622).\n\n[Note 2: This proposal is \"trivial to implement and would not slow down development\"](https://discordapp.com/channels/743654257642700911/747549526969286788/747611626194206913)\n\nThis proposal, if ratified, would redirect 1% of all inflows to the treasury to a [Gitcoin Grants Wallet](https://etherscan.io/address/0x232C95A72F132392171831cEcEc8c1161975c398), in order to support public goods in the Ethereum ecosystem. If ratified, every funding from the YAM treasury that went to the Gitcoin Grants wallet would be 100% used for public goods funding for the Ethereum ecosystem.  This funding would be allocated to the [*Tech* Grants](https://gitcoin.co/grants/tech?) category.\n\nThis proposal was motivated by [a tweet from Nick Dodson](https://twitter.com/iamnickdodson/status/1294264371489767424?s=21 ).  There is plenty of discussion on that thread to checkout as you weigh your votes.\n\nFor the uninitiated, Gitcoin Grants is like a crypto-style patreon, powered by [Quadratic Funding](https://wtfisqf.com), that has [delivered over $2.5mm of funding to Ethereum projects since Jan 2019](https://gitcoin.co/results).  For more on Gitcoin, checkout these reviews of Gitcoin Grants and QF \n- [Round 3 Review](https://vitalik.ca/general/2019/10/24/gitcoin.html)\n- [Round 4 Review](https://vitalik.ca/general/2020/01/28/round4.html)\n- [Round 5 Review](https://vitalik.ca/general/2020/04/30/round5.html)\n- [Round 6 Review](https://vitalik.ca/general/2020/07/21/round6.html)\n\nThere are many promising projects in the community that support public goods (like ETH1/ETH2 development, L2 research, media, education, etc).  Given Gitcoin's long history of successfully supporting public goods on Ethereum at scale, without being captured, through a tough bear market, I believe Gitcoin is the strongest contender at the current moment, in this category.\n\nThere are two main reasons that I believe this is a good idea for the YAM community:\n1.  **Karma** -- Gitcoin Grants played a part in funding the transition form v1 => v2 [see this link](https://gitcoin.co/grants/1059/yam-protocol-audit). \n2. **High ROI Community Goodwill & Publicity**.  We can shift the narrative around YAMs being a \"degen\" project to having some \"regen\" effects to the ecosystem, like funding the base layer upon which it depends.  This will make YAMs part of the broader conversation around [rainbow colored money](https://thedefiant.substack.com/p/rainbow-colored-money-the-story-behind) in the Ethereum ecosystem, and public goods funding in the information age.\n\nIf this proposal passes, I will commit to the following:\n1. 100% of the tokens that go to this wallet from the YAM contracts will be sent to public goods (minus gas fees, which I expect to be fairly negligible).\n2. Prominently listing YAMs as a co-funder of Gitcoin Grants Rounds, for each round it contributes funding.\n3. I would be happy to provide a report back to the YAM community on where the YAM funds went, once per quarter, for every quarter in which the value that the YAM system provided to Gitcoin Grants was more than $10k USD.\n\nI appreciate the consideration that the community has given to this proposal\nGitcoin Founder, [Kevin Owocki](https://twitter.com/owocki)",
+    "choices": [
+      "PASS",
+      "REJECT"
+    ],
+    "scores_total": 685782.4640661742,
+    "scores": [
+      567462.3407846342,
+      118320.12328154022
+    ],
+    "type": "single-choice",
+    "start": 1598375280,
+    "end": 1598875200,
+    "author": "0x00De4B13153673BCAE2616b67bf822500d325Fc3",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmVG4r8Qm1A1no6VQPrxrQGNQ5c7T4x63ELLNXCRWupihm",
+    "title": "YIP-10: Change the Delegator Reward Distribution",
+    "body": "Abstract\nThe proposed delegator reward distribution in YIP-2 does not reward YAMv1 delegators sufficiently. 242,953 YAMv1 delegated to save YAM, yet according to YIP-2 only 173,588.83 YAMv3 will be awarded. This isn't even a 1:1 reward. Under this model, delegators will receive a fraction of their original delegated amount as rewards. This proposal would remove the flat-reward model specified in YIP-2, correctly quantify the amount of YAMv1 delegated, multiply this amount by 2x, and distribute them by address on a pro-rata basis. \n\nMotivation\nYAMv1 delegators are not getting sufficiently compensated for doing all they could to save YAM. Individuals who delegated, exited the YAM/yCrv pool which was yielding 100% ROI. These individuals also implicitly committed to staying out of the pool for 3 days and essentially missing out on a 300% ROI. \n\nThe official YAM twitter even indicated that the original intention was that delegators would get \"significantly more\" YAM than those who remained in the pool. \nhttps://twitter.com/YamFinance/status/1293739908721446912\nUnder the current model proposed in YIP-2, this is not the case. \n\nYIP-2 calculated delegator rewards of 173,588.383, while 242,953 YAMv1 was delegated to save YAM. The proposed rewards do not even account all the YAM that was delegated to save YAM (https://raw.githubusercontent.com/yam-finance/yam-protocol/master/yam_delegator_snapshot_10650187_draft.json).\n\nProposal\n1. Correctly account for all the YAMv1 that was delegated (242,953), and multiply that by 2x. \n2. Distribute this amount as YAMv3 (485,906) on a pro-rata basis to addresses in this file (https://raw.githubusercontent.com/yam-finance/yam-protocol/master/yam_delegator_snapshot_10650187_draft.json) according to the percentage delegated.\n\nTotal YAMv3 delegator rewards would be 485,906 instead of 173,588.\nTotal YAMv3 supply would be:\n\n3,726,411 (YAMv2)\n1,100,000 (YIP-2 YAMv3 Liquidity Incentives)\n485,906 (Delegator rewards)\n= 5,312,317\n\nNote: This excludes the 1m additional YAMv3 reserved for Treasury, which is under vote in YIP-8.\nhttps://snapshot.page/#/yam/proposal/QmfNyNy72CTEDZL4d38vxhEcMuoVSPqZYigSWCPShCyXu6\n\nFOR: Change the YAMv3 delegator rewards as specified above.\nAGAINST: No changes.\n",
+    "choices": [
+      "FOR: Change the YAMv3 delegator rewards as specified ",
+      "AGAINST: No changes"
+    ],
+    "scores_total": 657241.7508920848,
+    "scores": [
+      135841.19158959933,
+      521400.5593024852
+    ],
+    "type": "single-choice",
+    "start": 1598374800,
+    "end": 1598634000,
+    "author": "0xCa845A71d1ff53E7DB7769Ae3f356AF53Fb43000",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "Qmcp3eQetob3Moov4EHJHG7zuihJrAkfFb1wdcUusQ17jX",
+    "title": "Delegator Reward Increase",
+    "body": "People who chose to delegate their tokens to the project, at the time of desperation must be treated better. Imagining the situation in the recent past, when many in the sphere called YAM a scam or careless project, and when many chose to cash out, many believers doubled down, even bought tokens and delegated them to rescue the project. This only provides assurance to the community that good faith and honest actions will not be forgotten and is duly responded.\n\nI propose the current reward in to the delegators as indicated in YIP-2 be multiplied by 3.",
+    "choices": [
+      "Yes, I agree.",
+      "No, I disagree."
+    ],
+    "scores_total": 820342.1896212257,
+    "scores": [
+      199235.6193458201,
+      621106.5702754059
+    ],
+    "type": "single-choice",
+    "start": 1598377260,
+    "end": 1598893200,
+    "author": "0x65d25E3F2696B73b850daA07Dd1E267dCfa67F2D",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmctSLYFvLhPoePehigZMwoLhdgyrMxjnrroFyPdmCVJoc",
+    "title": "YIP-12: Eliminate the 1 Million YAM Community Fund From YIP-2",
+    "body": "IMPORTANT NOTE:\nYIP-8 was not compliant due to an incorrectly chosen block #. YIP-12 is a compliant version of YIP-8.\n\nSummary:\nThis proposal would eliminate the 1 million YAM Community fund from YIP-2 bringing the YAM supply back to the original 5 million YAMs.\n\nMotivations:\n-The 1 million YAM community fund immediately increases YAM supply by 20% from the original YAM v1 supply of 5 million. This sudden increase in supply is bearish for YAM prices and unnecessary.\n-Pre-minting a large slush fund with no immediate need sets a bad precedence for YAM.\n-YAM supply should only be increased on an \"as needed\" basis and should always be done through community discussion of the need and approval through the proposal process.",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 638119.2706835389,
+    "scores": [
+      587267.9611788328,
+      50851.30950470606
+    ],
+    "type": "single-choice",
+    "start": 1598378400,
+    "end": 1598637600,
+    "author": "0xdb77c335C1D40bD40d92A12823C883AC73D2886C",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmdjEaCdfNvQVYDeApobNV6BbteR3mVAXnbHBax1gWh6Qp",
+    "title": "Guccis for Andre",
+    "body": "This proposal would require Andre Cronje to claim the Gucci sliders sent to him by Learn Yearn and upload PoG. (proof of Guccis) to the forum.\n\nAbstract\nCurrently the footwear Andre has pales in comparison to the overall aesthetic, comfort and lavishness of Gucci sliders. As chief builder and architect of YFI and the yearn ecosystem, his feet deserve only the finest most luxurious handcrafted Italian fashion.\n\nMotivation\nAndre refuses all monetary rewards but has said he is at the mercy of the protocol. It is time for the protocol to rise up and deliver the Guccis. These Guccis can also be worn at the future YFI Tokyo party, saving Andre the time and money of buying them later.\n\nCommunity development\nPutting the Guccis to vote will get people using the new system and increase activity going forward.\n\nHaving fun.\nYou know when you work hardest? When you’re having fun. Things have been too serious lately. Let’s get everyone together for the best cause on the planet.\n\nSpecification \nLearn Yearn sends a digital coupon to Andre Cronje to claim a pair of Gucci sliders.\n\nAndre receives the Gucci sliders and uploads PoG to the forum.\n\nEveryone who participates in the voting will receive a GUCCI NFT representing their participation in this once in a lifetime event.",
+    "choices": [
+      "Andre gets Guccis. We all get a Gucci NFT.",
+      "Nothing changes. No Guccis."
+    ],
+    "scores_total": 1621.371488608585,
+    "scores": [
+      1617.942147723638,
+      3.429340884946712
+    ],
+    "type": "single-choice",
+    "start": 1598376600,
+    "end": 1598635800,
+    "author": "0x7A1057E6e9093DA9C1D4C1D049609B6889fC4c67",
+    "space": {
+      "id": "yearn"
+    }
+  },
+  {
+    "id": "QmSUbZ7zMs2nJ8iemVpDDEtpUWqpGuu3zE7zdozAxCvzjF",
+    "title": "YIP-15: Delegator Reward Modification",
+    "body": "Trent Elmore and Brock Elmore submit the following proposal to increase delegator rewards.\n\nWhile I believe the initial proposal was well in line with the expectations set, it has become apparent that many in the community disagree with the existing reward structure. Delegators showed great faith in the team and project, took on risk in showing this support, and are extremely valuable community members.\n\nMany argue that delegators should not only be recouped for opportunity cost, but rewarded more generally for their commitment to the project. I agree and believe that, in return, it is fair that the community ask for their continued support of the project.\n\nI propose a modification to the flat + scaled approach proposed in YIP-2: All delegators with votes equal to or less than 20 votes will receive a flat 20 YAMv3 reward, while all delegators with over 20 votes will receive a 1:1 reward. This ensures every delegator receives at least a 1:1 reward, whereas the original YIP-2 allocated some delegators significantly more than 1:1 and some significantly less.\n\nRewards breakdown:\n- Equal to or Under 20 YAM Delegated: 2,100 delegators * 20 YAM = 42,000 YAMv3\n- Over 20 YAM Delegated 1:1 = 290,665 YAMv3\n- Total Delegator Rewards: 332,665 YAMv3\n\nIn total, this is a 92% (~159k) increase in delegator rewards, and delegators will receive 6.6% of the network, not including the potential community fund.\n\nRather than being immediately vested, however, these rewards will be unvested over a 1 month period, streamed on a block-by-block basis. This will promote the continued engagement of the delegator community.\n\nIn order to keep the total V3 supply in line with YIP-2 and YIP-12 potential supplies, I also propose to decrease the total LP Pool rewards from 1.1M to 940,923, following the same distribution scheme leading to ~282k in rewards the first week, decreasing by 30% each week.\n\nI also propose that any rounding necessary to bring the supply to a whole number be left to developer discretion.\n\nFinally, I propose that should this proposal be passed, additional proposals relating to delegator rewards will be considered invalid. \n\nTL;DR:\n- Delegators with equal or under 20 votes receive 20 YAM\n- Delegators with more than 20 votes receive 1:1 reward\n- Total Rewards 332,665 (92% increase from YIP-2)\n- Rewards unvested over 1 month timeframe\n- Decrease LP rewards from 1.1M to ~941k\n- Rounding discretion to developer\n- No further delegator rewards proposals\n",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 993856.7598838316,
+    "scores": [
+      698102.095206824,
+      295754.6646770074
+    ],
+    "type": "single-choice",
+    "start": 1598463900,
+    "end": 1598734860,
+    "author": "0x683A78bA1f6b25E29fbBC9Cd1BFA29A51520De84",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmVuJ2gDgKBje3MsMeR4M2TYdavQy8P5kqaa7HYFt3tpYN",
+    "title": "YIP-15 Amendment",
+    "body": "We, Brock Elmore and Trent Elmore, propose an amendment to YIP-15: Delegation Reward Modification in order to maintain the initial 27 YAMv3 reward to smaller holders. \n\nYIP-15:Delegation Reward Modification: (https://snapshot.page/#/yam/proposal/QmSUbZ7zMs2nJ8iemVpDDEtpUWqpGuu3zE7zdozAxCvzjF)\n\nWe propose to amend the following:\n\nAmendment to rewards:\nDelegators equal to or under 27 votes: 2,275 delegators * 27 YAM = 61,425 YAMv3\nDelegators over 27 votes 1:1 = 286,780 YAMv3\nTotal Delegator Rewards: 348,205\n\nThis will constitute a 100% (174,617) increase in rewards from the amount proposed in YIP-2, and delegator rewards will constitute 6.9% of the network.\n\nAmendment to LP incentives:\nLP Incentive rewards will decrease to 925,383 (15.8% decrease from the amount proposed in YIP-2), with the first week distributing ~277k in rewards, decreasing by 30% each week. \n\nIn keeping with the spirit of YIP-15’s item relating to no further proposals, we posit this as an amendment rather than standalone proposal. It must pass of its own accord, is only valid if YIP-15 passes, and will not be included otherwise.\n",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 651223.3576801862,
+    "scores": [
+      543618.6101701334,
+      107604.74751005274
+    ],
+    "type": "single-choice",
+    "start": 1598470800,
+    "end": 1598734920,
+    "author": "0x683A78bA1f6b25E29fbBC9Cd1BFA29A51520De84",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmVZSLF5ZmFaqBqJv1z5jQB1D16qt56xVko4QZ3WiPCm49",
+    "title": "YIP-15-1: Delegator Reward Fix",
+    "body": "TL;DR:\n\n1 : Delegators with equal or under 20 votes receive 20 YAM  [20*20Usd= 400usd]\n2 : Delegators with more than 20 votes receive 1:1 reward 【fix to receive (300K -（under 20 votes receive 20 YAM）/(more than 20 votesdelegators))】\n3 : Total Rewards 332,665 (92% increase from YIP-2) 【fix to 300k】\n4 : Rewards unvested over 1 month timeframe 【fix to 5 month timeline to do it \n ,1 months 20%.  Prove that they like the project not just dump quicky】\n5 : Decrease LP rewards from 1.1M to ~941k 【fix to 1000k】\n6 : Rounding discretion to developer\n7 : No further delegator rewards proposals",
+    "choices": [
+      "agree fix ",
+      "NO"
+    ],
+    "scores_total": 23637.225987883245,
+    "scores": [
+      6545.689098059126,
+      17091.536889824118
+    ],
+    "type": "single-choice",
+    "start": 1598443200,
+    "end": 1598788800,
+    "author": "0x1953497BD0d474Ae75618FF206C3cc2768C5BB68",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmVFXyPXCXeGWfzCwtpCAApteZPV1LEW5NaH8DTFTUn88d",
+    "title": "Urgent Proposal To Establish A YIP(YAM Improvement Proposal) System Before Any Other Proposal",
+    "body": "Hi Yamers, my name is Jimmy I am a system engineer. YAM first come to my attention after the price crash due to bugs in a smart contract. I have been closely following YAM development including the V2 migration and this latest governance proposal.\n\nIn order for YAM to move forward, a good YIP(YAM Improvement Proposal) system is urgently needed. While I see most of the new proposal here in one or another way asking for support for their proposal on governance system and etc... I strongly believe that the first and most important thing to do now is \"TO ESTABLISH A YIP SYSTEM BEFORE MOVING FORWARD TO ANY OTHER PROPOSAL\".\n\nAfter some discussion I come to the following proposal :\n\n1) We Urgently Need To Establish A YIP System Before Proposing Any New Proposal\nThe main reason behind this is that the YIP system serve as a backbone for any new proposal before they can be agreed and implemented by the community.  Without a YIP system anyone can suggest a new proposal and things will become complicated fast before a solution can be found.\n\n2) Any New Proposal Must Obtain Simple % of Vote Before Becoming Officail Suggested Proposal\n\n3) Official Suggested Proposal Must Obtain Certain % of Vote And Cannot Exceed Certain % of Rejection Before Qualified As An Official Proposal\n\nThe 2 tiers system that I proposed above should be able to eliminate the weak proposal and allow majority community members to focus their precious time on studying only on the official suggested proposal (rather than all new proposals) before they vote to accept or reject the proposal.\n\nAs you can see I did not list specific % of vote require in 2) and 3) above, this is because I strongly believe that the community should be allowed to decide this after this proposal had been accepted.\n\nLastly, please give me your support on the YIP(YAM Improvement Proposal) System to make YAMv3 a better system. Thank you.",
+    "choices": [
+      "Yes - Accept This Proposal",
+      "No - Do Note Accept This Proposal"
+    ],
+    "scores_total": 64422.94592583863,
+    "scores": [
+      61625.52723251594,
+      2797.418693322693
+    ],
+    "type": "single-choice",
+    "start": 1598443200,
+    "end": 1598961600,
+    "author": "0xF354800587aA33CCC37De4225Abc4a9c221c5F1B",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmRta9zsdthavsM3MxMqKsY9SPNHQSzKkJF7izn5iX3fkX",
+    "title": "Develop a highly integrated Defi YAM wallet to meet short、 medium、and long-term tasks.",
+    "body": "This YAM Wallet has almost all Defi functions, through marketing creativity to satisfy all community members, to attract new users with marketing stimulation, and to maintain highly competitive strength in the long-term development with business model creativity. There are three steps to go.\n\n1. Short-term: YAM wallet issues a new tokens named Yamily(Yamy), partly used for airdrops to YAMv2 moved to YAMv3 holders, which can increase members’ centripetal force to the community and stimulates the price raising of YAMv3; partial tokens are used for private and crowd sale, It can greatly increase the financial income of the community,  also throw a high expectation of YAM Wallet and YAMv3’s launch to the public.\n2. Mid-term: Once the YAM wallet is launched, partial tokens be used as lottery rewards for the mining user, which can attract new users rushing into the pool, but users need to only go through the YAM wallet to enter the mining pool. There're three effects following--YAM wallet’s popularity, the rapid increasing users in mining pools, and the higher price expectations of YAMv3.\n3. Long-term: Become decentralized banking system, compatible with cryptocurrency and fiat currency, link crypto financial services in the physical world, further to change the global fiat currency financial system. (The specific approach is still to be discussed)\n\nThe distribution of YAM wallet tokens: \n10% for airdrop, \n30% for sale, \n20% for mining pool lotto rewards,\n  8% for wallet development team rewards, \n  2% for proposal rewards, \n30% as the executive team’s salary and ecosystem maintenance. \nThe time is on the clerk, executive details authorizes the project team to decide.\nI think this proposal can be a proper way to meet the interests of all community members, and will not cause the YAMv3 price to fall rapidly after the mining pool is exhausted; in the long-term development, the YAM community can also create a new Defi aspect. \nby Hanson\n",
+    "choices": [
+      "Yes- Accept This Proposal",
+      "No- Do not Accept This Proposal"
+    ],
+    "scores_total": 32075.780803550475,
+    "scores": [
+      6742.68992212447,
+      25333.090881426007
+    ],
+    "type": "single-choice",
+    "start": 1598443200,
+    "end": 1598788800,
+    "author": "0x81eb31F04020CbA1FE65A072aF64FCac3C119c2d",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmRvEonYebgtZ38PsAovbgm2y7gtaRTVPz3NmaZjPsW39g",
+    "title": "YIP-18: Quadratic Voting Should Be Used By The Proposal System",
+    "body": "We want more people to have more opportunities to participate in community governance.And quadratic voting can effectively enhance everyone's sense of participation.So it can enhance community cohesion.\n\nWhat is Quadratic Voting?The simple explanation is that 16 yam are equivalent to 4 votes, 100 yam are equivalent to 10 votes, and 10000 yam are equivalent to 100 votes.\n\n- 16 yam = 4 votes\n- 100 yam = 10 votes\n- 10000 yam = 100 votes\n\nThis Mechanism Design Can Radicalize Democracy.Only quadratic cost induces marginal costs linear in votes purchased and thus welfare optimality if individuals' valuation of votes is proportional to their value of changing the outcome. \n\n\nFor more information,you can read vitalik's post: https://vitalik.ca/general/2019/12/07/quadratic.html",
+    "choices": [
+      "Yes",
+      "No"
+    ],
+    "scores_total": 45681.51307133328,
+    "scores": [
+      24627.99536725169,
+      21053.517704081583
+    ],
+    "type": "single-choice",
+    "start": 1598443200,
+    "end": 1598788800,
+    "author": "0x0530b049EebbB433De580f6358150574C7FB0346",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmbnbNdF2UtM1AE226Ujht91TpEt5i89Grww9rz1TxmHfp",
+    "title": "YIP-18: Quadratic Voting Should Be Used By The Proposal System",
+    "body": "\nWe want more people to have more opportunities to participate in community governance.And quadratic voting can effectively enhance everyone's sense of participation.So it can enhance community cohesion.\n\n\nWhat is Quadratic Voting?The simple explanation is that 16 yam are equivalent to 4 votes, 100 yam are equivalent to 10 votes, and 10000 yam are equivalent to 100 votes.\n- 16 yam = 4 votes\n- 100 yam = 10 votes\n- 10000 yam = 100 votes\n\nThis Mechanism Design Can Radicalize Democracy.Only quadratic cost induces marginal costs linear in votes purchased and thus welfare optimality if individuals' valuation of votes is proportional to their value of changing the outcome. \n\n\nFor more information,you can read vitalik's post: https://vitalik.ca/general/2019/12/07/quadratic.html",
+    "choices": [
+      "Yes",
+      "No"
+    ],
+    "scores_total": 34020.82921448981,
+    "scores": [
+      7971.382130184151,
+      26049.44708430565
+    ],
+    "type": "single-choice",
+    "start": 1598356800,
+    "end": 1598788800,
+    "author": "0x0530b049EebbB433De580f6358150574C7FB0346",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmdoQr44Q8rCPd7mfQsMhQwt4o3X4MZ2k89uLAe4fEXCwf",
+    "title": "Reward authors of innovative strategies",
+    "body": "Summary\nReward authors of original strategies by determining a split between strategist and governance roles.\n\nAbstract\nThis proposal is to poll for a reward split between strategy makers and governance stakers. It will be promoted to YIP unless a noop (0% to strategist, 100% to governance) option wins.\n\nMotivation\nA kid can write a \"stake in unipool, sell on uniswap\" strategy these days. But can we come up with something better? Can your strategy hold up when there is $100 million in it?\n\nOur very first community-developed strategy for ETH will come out real soon, it's the most complex so far and I think it's an important point to have this discussion.\n\nWe need to reward people who develop original and ingenious strategies.\n\nSpecification\nImplement a per-strategy harvest % split between `strategist` and `governance`.",
+    "choices": [
+      "0% to strategist, 100% to governance",
+      "10% to strategist, 90% to governance",
+      "20% to strategist, 80% to governance",
+      "30% to strategist, 70% to governance",
+      "40% to strategist, 60% to governance",
+      "50% to strategist, 50% to governance",
+      "60% to strategist, 40% to governance",
+      "70% to strategist, 30% to governance",
+      "80% to strategist, 20% to governance",
+      "90% to strategist, 10% to governance",
+      "100% to strategist, 0% to governance"
+    ],
+    "scores_total": 539.3945786754464,
+    "scores": [
+      41.1308193998537,
+      390.99638253653865,
+      89.50713570948155,
+      6.445,
+      0,
+      1.084971972755934,
+      0,
+      0,
+      10.23026905681632,
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598517000,
+    "end": 1598776200,
+    "author": "0x7A1057E6e9093DA9C1D4C1D049609B6889fC4c67",
+    "space": {
+      "id": "yearn"
+    }
+  },
+  {
+    "id": "QmP5iH2TnN2UKTjsNpT1QSHETAqysQFmUtFdJdRgfQS3z5",
+    "title": "YIP-20 : Get V3 quickly",
+    "body": "1: There can be no absolute existence of any proposal\n2: Cancel all rewards\n3: 5m- 3.72m = 128M all to pools\n4: change end timeline to Aug 31\n5: all rewards after luanch to proposal\n6: V3 code to audit be faster\n7: dont waste time to reward",
+    "choices": [
+      "yes, i agree all",
+      "no,but i agree 2"
+    ],
+    "scores_total": 12764.672268024804,
+    "scores": [
+      12575.108426923747,
+      189.56384110105785
+    ],
+    "type": "single-choice",
+    "start": 1598443200,
+    "end": 1598875200,
+    "author": "0x1953497BD0d474Ae75618FF206C3cc2768C5BB68",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmaYYv1Q28FhjC3hpgwyAv8p7M7F2WxBwM7YVmDrQo933M",
+    "title": "YIP-21 : Change end timeline Sep7 to Sep 1",
+    "body": "https://forum.yam.finance/t/lets-get-to-v3-asap-focus-on-blockers\n\nWe need to get to v3 ASAP\nLet’s bump up the “end” timeline a week (from Sep 7 to  Sep 1)\nThe only essential v2 governance matter remaining is to decide delegator rewards\n\nchange end time to Sep 1",
+    "choices": [
+      "yes ",
+      "no"
+    ],
+    "scores_total": 40072.78517380984,
+    "scores": [
+      39883.22133270879,
+      189.56384110105785
+    ],
+    "type": "single-choice",
+    "start": 1598443200,
+    "end": 1598875200,
+    "author": "0x1953497BD0d474Ae75618FF206C3cc2768C5BB68",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmXAZP8tYwX2zZz5EzfxLZUYJt6TM9EmxY1L4qodhZ5zcZ",
+    "title": "YIP-16: End of V2 Governance And Audit Finalization",
+    "body": "The launch team proposes the following relating to the end of the V2 Governance period and V3 audit completion.\n\nItem 1:\n\nWe propose to update the conclusion of the V2 interim governance period to 11:59PM UTC, August 31, 2020. All valid proposals and amendments passing with quorum at that time and not superseded by a conflicting proposal will be implemented in V3.\n\nThis timeline ensures all currently valid proposals will have time to conclude, with the exception of the proposal to create a more formal YIP process. While this idea is valuable, the governance process will necessarily change with the fully functional V3 protocol, and a proposal framework can be developed through community dialogue without a V2 vote. \n\nItem 2:\n\nWe propose the following audit details:\n\nAuditor: Peckshield Inc.\nCost: $28,000\nLength: 3.5 person-weeks\nRate: $8,000/person-week\nStart Date: Week of 8/31/2020\nCompletion: Approximately two weeks after start\n\nThis option was chosen based on auditor availability, as well as the fact that Peckshield is already familiar with the codebase due to their work on V1 to V2 migration.\n\nItem 3:\n\nWe propose the remaining funds from the Gitcoin audit grant will be used to fund future audits and a bug bounty program to be instituted at launch, at the launch team’s discretion.\n",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 481624.2566271565,
+    "scores": [
+      481100.68006939616,
+      523.5765577604213
+    ],
+    "type": "single-choice",
+    "start": 1598621700,
+    "end": 1598880900,
+    "author": "0x683A78bA1f6b25E29fbBC9Cd1BFA29A51520De84",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmSwFus2RLkoNJRSm2VTrAxjdRQc23RrWY7W6s675CXnzi",
+    "title": "YIP-22: YAM FAM Migration Rescue Multi-sig Fund",
+    "body": "Objective\n\nSet aside funds to assist users who missed the YAMv1 → YAMv2 migration except for dust accounts, accounts with YAMs only in Uniswap, and unharvested yield accrued to LPs but never claimed.\n\nSummary\n\nAllocate funds to compensate users who missed or failed to migrate from YAMv1 to YAMv2 according to the following schedule:\n\n- Set aside up to 50,000 YAM (1% of the 5,000,000 YAM total supply), but start with only 10,000 YAM in a 3-of-5 multisignature wallet managed by active YAM community members (Members TBD);\n- If the initial 10,000 YAMs is disbursed to claimants, YAM Governance would vote to mint another batch of 10,000 YAM for disbursement by the multisignature wallet;\n- Advertise the availability of assistance to users who missed the YAMv1 migration;\n- Disburse funds to compensate users that failed to migrate with 100% of the equivalent number of YAMv3 that they would have received had they successfully migrated to YAMv2;\n- Six weeks after the launch of YAMv3, any unclaimed funds set aside are to be sent to the YAM treasury.\n- Some migration failures were already compensated by YAM community members. These community members would have blockchain records examined, and would be reimbursed for their proactive efforts to compensate for failed migrations.\n\nCompensation requests will be compared to a snapshot of balances on the last possible block of migration, excluding those accounts in the Uniswap pool and reimbursed from the multisig on a case-by-case basis. Stated clearly, accounts that purchased YAM after the migration block will not be compensated. Accounts that failed migration because they were providing liquidity in Uniswap will also not be compensated. Only YAMs claimed or harvested to the user’s wallet will be valid, unclaimed yields will not be compensated.\n\nRecords of all compensation transactions will be published for inspection by the YAM community.\n\nThis is an alternative to “YAM FAM Migration Rescue Airdrop” and if both pass, would be enacted only if it receives more “approve” votes than the “YAM FAM Migration Rescue Airdrop” proposal.\n\nRationale\n\nAround 1.5% of the YAM supply—approximately 75,000 YAM—missed the YAMv1 to YAMv2 migration. The migration window was a rather short 72 hours, and some users did not hear the announcement, could not reach their wallet in time to migrate, or encountered technical difficulties with the migration transactions that prevented migration from succeeding.\n\nBy setting aside funds to assist these users, the YAM project can demonstrate its commitment to early supporters and invite them to re-engage with the YAM project.",
+    "choices": [
+      "For Rescue Fund",
+      "Against"
+    ],
+    "scores_total": 221427.40219979212,
+    "scores": [
+      201296.59562745845,
+      20130.80657233371
+    ],
+    "type": "single-choice",
+    "start": 1598637600,
+    "end": 1598896800,
+    "author": "0x46499275b5c4d67dfa46B92D89aADA3158ea392e",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "Qma5N6xV4nkzBALgGZMSD8L7A7mrsrRMntXpx2xT1MGPbu",
+    "title": "YIP-23: YAM FAM Migration Rescue Airdrop",
+    "body": "Objective\n\nAirdrop funds to assist users who missed the YAMv1 → YAMv2 migration except for dust accounts, accounts with YAMs only in Uniswap, and unharvested yield accrued to LPs but never claimed.\n\nSummary\n\nUsing a snapshot of YAM V1 balances at the last possible block of migration, airdrop YAM V3 according to the following rules:\n\n- Account has more than a “dust” amount of YAM V1, where ‘dust’ will be defined based on gas costs at the time of the airdrop;\n- The YAM V1 is not in a burn address;\n- The YAM V1 is not in the Uniswap Pool;\n- The YAM V1 was harvested to the user wallet and not left “unclaimed”\n\nStated clearly, accounts that purchased YAM after the migration block will not be compensated. And accounts that failed migration because they were providing liquidity in Uniswap will also not be compensated. Only YAMs claimed (harvested) to the user’s wallet will be valid, unclaimed yields will not be compensated.\n\nRecords of all compensation transactions will be published for inspection by the YAM community.\n\nThis is an alternative to “YAM FAM Migration Rescue Multi-sig Fund” and if both pass, would be enacted only if it receives more “approve” votes than the “YAM FAM Migration Rescue Multi-sig Fund” proposal.\n\nRationale\n\nAround 1.5% of the YAM supply—approximately 75,000 YAM—missed the YAMv1 to YAMv2 migration. The migration window was a rather short 72 hours, and some users did not hear the announcement, could not reach their wallet in time to migrate, or encountered technical difficulties with the migration transactions that prevented migration from succeeding.\n\nBy airdropping this small amount of funds to assist these users, the YAM project can demonstrate its commitment to early supporters and invite them to re-engage with the YAM project.",
+    "choices": [
+      "For Rescue Airdrop",
+      "Against"
+    ],
+    "scores_total": 57310.800872503714,
+    "scores": [
+      22200.768991539473,
+      35110.03188096424
+    ],
+    "type": "single-choice",
+    "start": 1598637600,
+    "end": 1598896800,
+    "author": "0x46499275b5c4d67dfa46B92D89aADA3158ea392e",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmcHG5AFKrSXJ7bnww8rJfTSUPYtK3tbVXBVr4oxzKoEqY",
+    "title": "YIP-17: YAM FAM Improved LP Incentives",
+    "body": "Objective\n\nIncentivize YAM liquidity providers over a longer time period while avoiding overpaying for liquidity—and creating unnecessary downward pressure on the YAM price—in the first few weeks after launch.\n\nSummary\n\nYAM payments to incentivize liquidity providers in the YAM:yUSD Uniswap pool will be distributed according to the following schedule:\n\n- 92,538.3 YAM to be paid to liquidity providers in the first week;\n- The amount of the incentive to decrease by 10% in each subsequent week.\n\nIf this payment continues indefinitely, the total incentive paid to YAM:yUSD liquidity providers overall will be 925,383 YAM. This is the same LP incentive total as proposed in the YIP-15 amendment.\n\nRationale\n\nYAM is a long-term experiment, and YAM incentives should be designed to support the goals of the YAM platform over the long term.\n\nThe liquidity provider incentives proposed in the YIP-15 amendment start far too high, distributing 30% of the LP incentive pool—almost 10% of the current YAM supply—in only the first week! This dilutes current YAM holders, overpays for liquidity, and puts unnecessary downward pressure on the YAM price.\n\nBy stretching the liquidity provider incentives over a longer period of time, liquidity can be incentivized over a longer time period and unnecessary downward pressure on the YAM price can be avoided.",
+    "choices": [
+      "For Improved Incentives",
+      "Against"
+    ],
+    "scores_total": 253143.4863859666,
+    "scores": [
+      252968.84160598987,
+      174.64477997673217
+    ],
+    "type": "single-choice",
+    "start": 1598639400,
+    "end": 1598898600,
+    "author": "0x46499275b5c4d67dfa46B92D89aADA3158ea392e",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmVP5f5BWuxhRtKBUrUifjQrPYRM5YHngQYdK62UuSRt6p",
+    "title": "YIP-19: YAM FAM Migration Vesting",
+    "body": "Objective\n\nEncourage YAM price appreciation by temporarily restricting the supply of YAM during the v3 relaunch.\n\nSummary\n\nYAMv2 that is deposited in the YAMv3 migration contract will become available to withdraw and use according to the following schedule:\n\n- 50% available immediately upon v3 launch;\n- 50% to become available (vest) continuously over the first 30 days after v3 launch.\n\nYAM paid out to liquidity providers in Uniswap pools will be available to withdraw and use according to the following schedule:\n\n- 50% available immediately when the incentive is claimed;\n- 50% to become available (vest) continuously over 90 days after the incentive is claimed\n\nYAM that is awarded to addresses that delegated votes in the attempt to save YAMv1 will be available to withdraw and use according to the following schedule:\n\n- 100% to become available (vest) continuously over the first 90 days after v3 launch.\n\nRationale\n\nIt is desirable to head into the initial YAMv3 rebases with a price in significant excess of the target price of $1.00. This will help build excitement for the return of YAM and to seed the YAM treasury to fund the purchase of assets and future experiments to expand YAM.\n\nWhen v3 launches, there will be users who do not yet own YAM who want to purchase YAM to take part in the experiment. This demand to purchase YAM will put upward pressure on the price. By restricting the amount of YAM initially available to buy on the market through the vesting recommended in this proposal, this may improve the price heading into the initial rebases.\n\nVesting of tokens, including vesting of YAM awarded to addresses that delegates voted in the attempt to save YAMv1 and YAM awarded to liquidity providers, will also help to align incentives and to encourage longer-term engagement with all users of the YAM platform.",
+    "choices": [
+      "For Vesting Schedule",
+      "Against"
+    ],
+    "scores_total": 253328.86224915422,
+    "scores": [
+      250119.6564626119,
+      3209.205786542279
+    ],
+    "type": "single-choice",
+    "start": 1598639400,
+    "end": 1598898600,
+    "author": "0x46499275b5c4d67dfa46B92D89aADA3158ea392e",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmPa67zgRNHVmWzkskRgGPv2nXUgETaJHp11JGcJG5Jxsj",
+    "title": "YIP-24 : Core Rewards",
+    "body": "When everyone is arguing for their own interests. I propose. Withdraw 10% from the remaining funds（delegator rewards or others）. About 100,000 YamV3 will be awarded the market value\nLike this:\nYam V3 marketcap rank 100 ------ 10000 to Core Team.\nYam V3 marketcap rank 90 ------ 10000 to Core Team.\nYam V3 marketcap rank 80 ------ 10000 to Core Team.\nYam V3 marketcap rank 70 ------ 10000 to Core Team.\nYam V3 marketcap rank 60 ------ 10000 to Core Team.\nYam V3 marketcap rank 50 ------ 10000 to Core Team.\nYam V3 marketcap rank 40 ------ 10000 to Core Team.\nYam V3 marketcap rank 30 ------ 10000 to Core Team.\nYam V3 marketcap rank 20 ------ 10000 to Core Team.\nYam V3 marketcap rank 10 ------ 10000 to Core Team.\nDevelopment teams should be rewarded, especially when the value increases\nThe specific reward scheme can be designed with detailed proposal without affecting code 31 Audit\n\n\n\n当每个人都在为自己的利益争吵时。我提议。从剩余资金中提取10%（委托人奖励或其他）。约10万YamV3\n\n这样：\n山药V3市值排名100---10000到核心团队。\n山药V3市值排名90---10000到核心团队。\n山药V3市值排名80---10000到核心团队。\n山药V3市值排名70---10000到核心团队。\n山药V3市值排名60---10000到核心团队。\n山药V3市值排名50---10000到核心团队。\n山药V3市值排名40---10000到核心团队。\n山药V3市值排名30---10000核心团队。\n山药V3市值排名20---10000到核心团队。\n山药V3市值排名10---10000到核心团队。\n\n开发团队应该得到奖励，特别是当价值增加时\n具体的奖励方案可以在不影响31号代码审核的情况下设计详细的方案",
+    "choices": [
+      "Should be obtained （值得奖励）",
+      "They're not worth it（不值奖励）"
+    ],
+    "scores_total": 46985.91090946342,
+    "scores": [
+      46796.34706836236,
+      189.56384110105785
+    ],
+    "type": "single-choice",
+    "start": 1598529600,
+    "end": 1598875200,
+    "author": "0x1953497BD0d474Ae75618FF206C3cc2768C5BB68",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmPT1EYwJsDMw7mj6quusmbzjJjAzbvz3AW5xzRNCb9x6x",
+    "title": "Reward all those who have voted 5% of Delegator Rewards",
+    "body": "Voting and governance is important. People who take time to read proposals and cast votes deserve to be rewarded.\n\nAs per YIP-15: Delegator Reward Modification (https://snapshot.page/#/yam/proposal/QmSUbZ7zMs2nJ8iemVpDDEtpUWqpGuu3zE7zdozAxCvzjF) Total Delegator Rewards are set at 332,665 YAMv3.\n\nThis proposal is to carve out 5% of those rewards and provide them to every account which has cast a vote on any YAM Finance proposal prior to the time THIS proposal goes live (Aug 30, 2020, 2pm UTC). \n\nAll accounts that have previously cast a vote will equally share in the 5% carve out.\n\n",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 27044.133107841844,
+    "scores": [
+      25554.540580221677,
+      1489.5925276201654
+    ],
+    "type": "single-choice",
+    "start": 1598796000,
+    "end": 1598918340,
+    "author": "0x1d5E65a087eBc3d03a294412E46CE5D6882969f4",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "Qmbh9K9F3xtHBXoScfk6m6hiFRsGBM4D8GZWbvdGJPaA6z",
+    "title": "SIP-1 (The right one): Adjust Reward Weight for SUSHI-ETH LP Pool",
+    "body": "## SIP-1: Adjust Reward Weight for SUSHI-ETH LP Pool\n\nA number of community members have suggested that we should adjust reward weight (currently 2x) for the SUSHI-ETH LP Pool. What should the weight be?\n\nSUSHI-ETH LP stakers are the ones with highest skin in the game. They are providing liquidity to $SUSHI token and should be rewarded properly. They are also most likely the first pool to migrate from Uniswap to SushiSwap. Increasing the weights incentivizes people to stay in the pool for long run.\n\nIncreasing the value too high will naturally make rewards on other LP pools lower (because the total number of $SUSHI minted is limited). This is not good because liquidity and trading volumes are what matters for SushiSwap and $SUSHI tokens in long run.\n\nOnce the vote is done, Chef Nomi will take the weighted average value and implement the change by invoking MasterChef \"set\" function through the Timelock contract.\n\n---\n*Chef Nomi trusts you guys, so please vote responsibly and reasonably.*\n\n> As a reminder, voting opens for 24 hours. Voting power is determined by SUSHI-ETH LP staked in the MasterChef contract at ~7-8 hours (2000 blocks) after the proposal is proposed. Once approved, Chef Nomi will be implementing the change through the Timelock contract. Changes submitted by Chef Nomi are always subjected to a 48-hour time delay.",
+    "choices": [
+      "2x",
+      "3x",
+      "4x",
+      "5x"
+    ],
+    "scores_total": 216276.7240009344,
+    "scores": [
+      4028.284042211382,
+      5669.3305751669905,
+      20629.64626925392,
+      185949.46311430208
+    ],
+    "type": "single-choice",
+    "start": 1598806800,
+    "end": 1598893200,
+    "author": "0xF942Dba4159CB61F8AD88ca4A83f5204e8F4A6bd",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmNzRjiNUrUsteNFrc8BVXVQwB36cRE1H34pAgY1ivi8rh",
+    "title": " SIP-2: Adjust Reward Weight for USDT-ETH LP Pool ",
+    "body": " ## SIP-2: (7-day vol: ~185M) Adjust Reward Weight for USDT-ETH LP Pool\n\nUSDT-ETH pool commands by far the highest trading volume on Uniswap , historically sometimes over 50% (see https://uniswap.info/pairs). They naturally have very high liquidity and that currently makes $SUSHI reward yield very low compared to other pools that do not command the same level of liquidity (see https://sushi.zippo.io/). Should we adjust the reward weights of USDT-ETH LP Pool to what value?\n\nIf you are not sure what to vote. Come discuss in our #governance discord channel - https://discord.gg/uSMaX2x\n\nOnce the vote is done, Chef Nomi will take the weighted average value and implement the change by invoking MasterChef \"set\" function through the Timelock contract.\n\n---\n*Chef Nomi trusts you guys, so please vote responsibly and reasonably.*\n\n> As a reminder, voting opens for 24 hours. Voting power is determined by SUSHI-ETH LP staked in the MasterChef contract at ~7-8 hours (2000 blocks) after the proposal is proposed. Once approved, Chef Nomi will be implementing the change through the Timelock contract. Changes submitted by Chef Nomi are always subjected to a 48-hour time delay.\n",
+    "choices": [
+      "1x",
+      "2x",
+      "3x",
+      "4x"
+    ],
+    "scores_total": 245120.9000139654,
+    "scores": [
+      168944.10187143798,
+      1191.780480782358,
+      984.8377278180508,
+      74000.17993392705
+    ],
+    "type": "single-choice",
+    "start": 1598806800,
+    "end": 1598893200,
+    "author": "0xF942Dba4159CB61F8AD88ca4A83f5204e8F4A6bd",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmSjQU4ys9brt96cgyEDfcH9tJQ93e8c26RXCZTJRSX8fS",
+    "title": "Should an admin fee be introduced to Curve Finance?",
+    "body": "Summary:\nProposal to introduce an admin fee. This would introduce a new admin fee to be distributed to veCRV holders.\nThis ensures all Curve stakeholders benefit from an increase in volume on Curve and it brings an additional valuable feature to being an active member of governance and CRV holder.\n\nSpecifications:\n\nIntroduce an admin fee\nThe admin fee would then be directed to veCRV holders, a discussion with two options on how to do so will be added in the coming hours which will then also be voted on the signalling tool.\nThe maximum current admin fee is 50% of the current trading fee of 0.04%.\n\nSelecting 50% means you wish to see an admin fee of 0.02%\nSelecting 25% means you wish to see an admin fee of 0.01%\nSelecting 10% means you wish to see an admin fee of 0.004%\nSelecting 0% means you are against the introduction of an admin fee\n\nRead more about this proposal: https://gov.curve.fi/t/cip-7-add-a-0-02-admin-fee-to-be-distributed-to-vecrv-holders/255\n\nPlease note: This is a signalling tool, proposals will need to be validated by the DAO on-chain.",
+    "choices": [
+      "50% admin fee",
+      "25% admin fee",
+      "10% admin fee",
+      "0% admin fee (no change)"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598688000,
+    "end": 1599084000,
+    "author": "0x052C60CEd52C7fD4Ac01FcCF0349CC495E3A2318",
+    "space": {
+      "id": "curve.eth"
+    }
+  },
+  {
+    "id": "Qmam85UYWYi7ZRuP8FsNvHSczoNB1XPurQ9FKpnLg8GZ6n",
+    "title": "Reduce Scam Token/Projects",
+    "body": "We should set up a treasury dedicated to reward people that find scam tokens and bugs in codes. We should also have pending projects before they are added to provide liquidity too.\n\nBasically :\n\nPerson adds token/project, it gets put into a pending list before being voted on. Community members can self audit it or we can have official auditors paid out in a % of fees from the treasury. Almost like a bug bounty program.   ",
+    "choices": [
+      "Yes",
+      "No "
+    ],
+    "scores_total": 6667.609788343547,
+    "scores": [
+      6594.267115852717,
+      73.34267249082959
+    ],
+    "type": "single-choice",
+    "start": 1598875200,
+    "end": 1599134400,
+    "author": "0xAdd11019d12a7055fb4cb5453226c250D7851BAd",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmUvNBaW6xUyBRDqtUmR1Fsnnm9eioGHhHv6SZcYDhDJg3",
+    "title": "SIP-3: (7-day vol > ~100M) Adjust Reward Weight for YFI-ETH / USDC-ETH / DAI-ETH LP Pools",
+    "body": "## SIP-3: (7-day vol: ~150M / ~130M / ~100M) Adjust Reward Weight for YFI-ETH / USDC-ETH / DAI-ETH LP Pool\n\nThese pools command substantial trading volume on Uniswap. They naturally have very high liquidity and that currently makes $SUSHI reward yield very low compared to other pools that do not command the same level of liquidity / volume (see https://sushi.zippo.io/). Should we adjust the reward weights of these LP pools to what value?\n\nIt's very important for SushiSwap to compensate them reasonably. We need them to stay with us throughout and after the migration.\n\n**It's important to keep in mind that higher reward for one pool barely affects the rewards of other pools. Do the math.**\n\nIf you are not sure what to vote. Come discuss in our #governance discord channel - https://discord.gg/uSMaX2x\n\nOnce the vote is done, Chef Nomi will take the weighted average value and implement the change by invoking MasterChef \"set\" function through the Timelock contract.\n\n--\n*Chef Nomi trusts you guys, so please vote responsibly and reasonably.*\n\n> As a reminder, voting opens for 24 hours. Voting power is determined by SUSHI-ETH LP staked in the MasterChef contract at ~7-8 hours (2000 blocks) after the proposal is proposed. Once approved, Chef Nomi will be implementing the change through the Timelock contract. Changes submitted by Chef Nomi are always subjected to a 48-hour time delay.\n",
+    "choices": [
+      "1x",
+      "2x",
+      "3x",
+      "4x"
+    ],
+    "scores_total": 248264.6069629359,
+    "scores": [
+      105100.30719061116,
+      50607.72625644386,
+      295.6302768766507,
+      92260.94323900444
+    ],
+    "type": "single-choice",
+    "start": 1598857200,
+    "end": 1598943600,
+    "author": "0xF942Dba4159CB61F8AD88ca4A83f5204e8F4A6bd",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmY3kCrZSrohRJcXimD8V6FfSJgafLubjZyPyTDwUrDEdX",
+    "title": "CIP#8 - Propose to add dToken pool with liquidity gauge",
+    "body": "Summary:\n\ndForce proposes to add a dToken pool (dUSDx/dDAI/dUSDC/dUSDT). dToken is a yield aggregator launched by dForce, featured by harvesting the highest underlying yield in the market (USDT 12.1% APY, USDC 6.1% APY, DAI 12.1% APY, as of 31 Aug), as well as gas optimization through a set of strategies that is anticipated to save at least 60% of gas consumption associated (compared to direct interactions with underlying lending protocol for asset supply and sale of governance token mined).\nCurrently, dToken pool participants can farm DF token by staking through dForce Staking Portal (https://staking.dforce.network/) (mining APY 109% for USDx/USDC on Uniswap), by adding a dToken pool on Curve, LPs could provide liquidity and have the benefit of mining both DF and CRV, (i.e with projected combined yield of 170%), which is a great additional yield incentive to LPs on Curve.\n\nRead More:\nhttps://gov.curve.fi/t/cip-8-propose-to-add-dtoken-pool-with-liquidity-gauge/264",
+    "choices": [
+      "For",
+      "Against"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598738400,
+    "end": 1599170400,
+    "author": "0x052C60CEd52C7fD4Ac01FcCF0349CC495E3A2318",
+    "space": {
+      "id": "curve.eth"
+    }
+  },
+  {
+    "id": "QmaWmQFWXfRiWmAeM7aUny3mM7buJeAFinuq3n6Sx7e7U8",
+    "title": "Add LPT/ETH pool",
+    "body": "Add support for the LPT/ETH pool on Uniswap to Sushiswap \n\nhttps://uniswap.info/pair/0x755c1a8f71f4210cd7b60b9439451efcbeba33d1",
+    "choices": [
+      "Yes ",
+      "No"
+    ],
+    "scores_total": 10690.374988431993,
+    "scores": [
+      0,
+      10690.374988431991
+    ],
+    "type": "single-choice",
+    "start": 1598788800,
+    "end": 1599393600,
+    "author": "0xe426ad6DDF3905de9D798f49cb19d6E9A6a3335f",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmTNd5kqky9Bo8EYvSfAmWPVj3gZJEyfvNXWhDF2jmVfdJ",
+    "title": "Add Support for YFV/ETH LP ",
+    "body": "YFV/ETH pair is $20m plus volume for last couple days. Let's bring those boys to get here to farm Sushi as well. Win Win for both community project. Their TVL is already about $400m. So let's vote guys.",
+    "choices": [
+      "Yes",
+      "No"
+    ],
+    "scores_total": 34972.530024985055,
+    "scores": [
+      2278.423046499912,
+      32694.10697848514
+    ],
+    "type": "single-choice",
+    "start": 1598875200,
+    "end": 1598961600,
+    "author": "0x8BA4644045093DE17bF3AD90f9759bcDF1626760",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmQdWLr2WPi9TQzgfKfjbzt8YT7ngbx9DSUepPJ2CrvmAi",
+    "title": "Reward and Harvest Recapture the Crown",
+    "body": "<Attitude to share thoughts>\nㅡThoughts on me for community participation\n\nDefi's know-how and experience gained through the best technology was used to take advantage of the transformation strike.\n\nHow Yam catches the dragon: develops YCD coins (does not sell/distribute coins).\nIt is an individual project that does not actually issue coins and works online to YAM as a potential development, and takes on the role of tasks that are only responsible for online functions within the project, and is not distributed. Even if the number of coins increases by itself\nIt only takes the result of the online function\n\n(★In the future, if the program works perfectly, 100% of YCD coins will be rewarded fairly with your account based on the YAMv2 snapshot, and distribution will be supported by linking several types of DEFI functions.\nHereby\nYAM project program error free and no gas required fixed assets on the go.\nAlso, the compensation issue is resolved at this time.★)\n\n* YAMv2 reward support is not included in fixed assets YAMv3.\nSnapshots recorded in YAMv2 can be rewarded with a completed YCD in the future. \"\n\nConclusion: YAMv3 solves the online function. \n<Based on stable technological innovation, we will give a fair return to those who crossed the unpaved road together. : We crossed the mountain together>",
+    "choices": [
+      "Agree if possible",
+      "I do not know"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598824800,
+    "end": 1598882400,
+    "author": "0xe8524f92d729D32844870838714B2A5E5070930F",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "QmSEZBdFx9qfqYF2VGFWcWqnrCBZ6FHKDt5ThyPmHS8TN5",
+    "title": "VOTE: Gucci Slipper NFT Design Competition",
+    "body": "Vote for your favorite design. \n\nThe winner will adorn the legendary PoG NFT POAPs that you will one day bequeath to your great-grand kids. Oh, and they win 5,000,000 Dres (0.05 YFI 🤤)\n\n@learn2yearn's Proposal: https://gov.yearn.finance/t/proposal-guccis-for-andre  \nOpen Call: https://gov.yearn.finance/t/open-call-gucci-slipper-nft-design-competition\n\n**1: boatonagoat** \n![](https://aws1.discourse-cdn.com/business20/uploads/yearn/original/2X/5/56dda19a542365a669873f1e04fbec84bdcbd63e.png)\n\n**2: Definn 1**\n![](https://aws1.discourse-cdn.com/business20/uploads/yearn/original/2X/8/80b87dac3261f289df3d623964c614c721d050c3.png)\n\n**3: uhmpeps & Definn**\n![](https://aws1.discourse-cdn.com/business20/uploads/yearn/original/2X/5/59abe1f9a50d4804c95202ac0dc4211cb410db84.jpeg)\n\n**4: mpod**\n![](https://aws1.discourse-cdn.com/business20/uploads/yearn/original/2X/0/06cf610ad92b9c0c687c8e3ab1dd7703a5e9a89e.png)\n\n**5: CryptoBeaver**\n![](https://aws1.discourse-cdn.com/business20/uploads/yearn/original/2X/e/edfffb9cedbeacddee0a9df00ba629e3e5a4c157.png)\n\n**6: kyoku**\n![](https://aws1.discourse-cdn.com/business20/uploads/yearn/original/2X/8/8ba76bc8f838a65d7c5fd1aaa6eeb48feda28af3.png)\n\n**7: Definn 2**\n![](https://aws1.discourse-cdn.com/business20/uploads/yearn/original/2X/1/196002ddc4d4fa52743165577cbe88fb97d6ef2e.png)\n\n**8: gabriel**\n![](https://aws1.discourse-cdn.com/business20/uploads/yearn/original/2X/c/cfcd65fb3af0f2f44994dfc1c43b4b605082d865.png)\n\n**9: buddyart 1**\n![](https://aws1.discourse-cdn.com/business20/uploads/yearn/original/2X/8/88228d2749b51cc040eefe68804f1615eb234264.png)\n\n**10: Jokreg**\n![](https://aws1.discourse-cdn.com/business20/uploads/yearn/original/2X/7/7d092ade96556f4c5903beb01595e3708ff3b4a4.png)\n\n**11: thajuiceman**\n![](https://aws1.discourse-cdn.com/business20/uploads/yearn/original/2X/0/032dde12d28afa1df30c566a2dc586362996e4e5.png)\n\n**12: buddyart 2**\n![](https://aws1.discourse-cdn.com/business20/uploads/yearn/original/2X/a/ab5eb39da430662d889834af2d4156af9f0d55b2.png)\n\n**13: vipes 1**\n![](https://aws1.discourse-cdn.com/business20/uploads/yearn/original/2X/d/de80a03b7b92af2f2770bcaab2e463bf470f5a2a.png)\n\n**14: vipes 2**\n![](https://aws1.discourse-cdn.com/business20/uploads/yearn/original/2X/f/f3e764e44a1a28dd933212883d6f1a027b675559.png)\n\n\n\n\n",
+    "choices": [
+      "boatonagoat",
+      "Definn 1",
+      "uhmpeps & Definn",
+      "mpod",
+      "CryptoBeaver",
+      "kyoku",
+      "Definn 2",
+      "gabriel",
+      "buddyart 1",
+      "Jokreg",
+      "thajuiceman",
+      "buddyart 2",
+      "vipes 1",
+      "vipes 2"
+    ],
+    "scores_total": 321.4948702079981,
+    "scores": [
+      6.194500000000001,
+      0.19868262238471213,
+      0,
+      2.0979,
+      0,
+      8.662778367437998,
+      19.413995395697068,
+      0,
+      169.48069395091383,
+      1.8715,
+      49.569734115852896,
+      64.00508575571166,
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598886000,
+    "end": 1599058800,
+    "author": "0x29C4dbC1a81d06c9AA2fAed93Bb8B4a78F3eabDb",
+    "space": {
+      "id": "yearn"
+    }
+  },
+  {
+    "id": "QmNuZaLt4riJGPKb8XCHwqXvbBmHfrNyWkfB2hUwbSfPYP",
+    "title": " SIP-4: Add More LP Pools to SushiSwap",
+    "body": " SIP-4: Add More LP Pools to SushiSwap #Qme74uo\nActive\n\nWhat LP pools should we added for farming and liquidity migration on SushiSwap? Here you can find the list of pools with somewhat reasonable 7 day trading volume. See here for more info https://uniswap.info/pairs. Top 5 by voting result will be added to SushiSwap with initial reward weight of 0.2x.\n\nIf you are not sure what to vote. Come discuss in our #governance discord channel - https://discord.gg/uSMaX2x\n\nOnce the vote is done, Chef Nomi will take the top 5 pools and implement the change by invoking MasterChef \"add\" function through the Timelock contract.\n\n---\n*Chef Nomi trusts you guys, so please vote responsibly and reasonably.*\n\n> As a reminder, voting opens for 24 hours. Voting power is determined by SUSHI-ETH LP staked in the MasterChef contract at ~7-8 hours (2000 blocks) after the proposal is proposed. Once approved, Chef Nomi will be implementing the change through the Timelock contract. Changes submitted by Chef Nomi are always subjected to a 48-hour time delay.\n\n",
+    "choices": [
+      "YFV-USDT",
+      "BZRX-ETH",
+      "YFII-ETH",
+      "OM-ETH",
+      "YAMv2-ETH",
+      "ETH-FSW",
+      "ETH-CHAIN",
+      "ETH-CRV",
+      "DIA-ETH",
+      "ETH-ZZZ",
+      "STAKE-ETH",
+      "ETH-SWAP",
+      "MTA-ETH",
+      "CREAM-ETH",
+      "wNXM-ETH",
+      "REN-ETH",
+      "SRM-ETH",
+      "sUSD-$BASED",
+      "ANT-ETH",
+      "RSR-ETH"
+    ],
+    "scores_total": 494640.46947982605,
+    "scores": [
+      2526.024036993124,
+      147.89688658613613,
+      49491.79156600515,
+      1264.4864155016903,
+      82400.01382369015,
+      0,
+      80.8857817703457,
+      69893.34113265004,
+      472.1782938781621,
+      32.1670088458836,
+      77.17128300309851,
+      2063.8336102865705,
+      158.68875179022808,
+      48.05842044937471,
+      12228.376594159445,
+      98540.36417415338,
+      83220.60225206333,
+      91626.69916880046,
+      76.5043897358765,
+      291.38588946367224
+    ],
+    "type": "single-choice",
+    "start": 1598886000,
+    "end": 1598972400,
+    "author": "0xF942Dba4159CB61F8AD88ca4A83f5204e8F4A6bd",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmZ4xeiPWzp44mfi8ZqLJN4XN5sHH7cGT8k9KVMr1y7WEx",
+    "title": "CIP#5 Add hBTC/wBTC pool and a liquidity gauge for that pool",
+    "body": "Adding a hBTC/wBTC pool to further grow liquidity of BTC on Ethereum and easier swap between the two assets in the pool.\n\nThe hBTC/wBTC pool will be is a no-lending pool and more gas-optimized version of previous contracts. It’s ported to Vyper 0.2 and also changes the hardcap on admin fee to be 100%.\n\nAdding a hBTC/wBTC pool will attract more liquidity to Curve and users can swap between two centrally issued Bitcoin on Ethereum tokens and withdraw at more places which should help liquidity for all tokenised Bitcoin forms on Curve.\n\nDiscussion on Discourse:\nhttps://gov.curve.fi/t/cip-5-add-hbtc-wbtc-pool-and-a-liquidity-gauge-for-that-pool/162",
+    "choices": [
+      "Yes",
+      "No"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598875200,
+    "end": 1598961600,
+    "author": "0xbF7D65D769E82E7B862df338223263ba33F72623",
+    "space": {
+      "id": "curve.eth"
+    }
+  },
+  {
+    "id": "QmfSJc1PgrQdASz2aXDjEGHHCeXSnwbvAKiiKQG4t42qob",
+    "title": "Adjust Reward Weight for LINK-ETH LP Pool",
+    "body": "LINK-ETH pool is one of the top LP's in Uniswap, but apart from it's size, most of it's capital comes from LINK MARINES, one of the most powerful, influential and engaging communities in the Defi Space.\n\nIncreasing the reward multiple for LINK-ETH LP will boost the LINK MARINES engagement in the $SUSHI project and will result in a lot of collateral benefits for the $SUSHI community mid-term.\n\nShould we adjust the reward weights of LINK-ETH LP Pool to what value?",
+    "choices": [
+      "1x",
+      "2x",
+      "3x",
+      "4x"
+    ],
+    "scores_total": 26122.0574440667,
+    "scores": [
+      25904.713933072995,
+      42.39552668381008,
+      0,
+      174.9479843098951
+    ],
+    "type": "single-choice",
+    "start": 1598788800,
+    "end": 1598961600,
+    "author": "0xB72eD8401892466Ea8aF528C1af1d0524bc5e105",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "Qmb7W1zoseXA285jUeAXC9dWUjPeTgHoMk1XQWeiy24QZQ",
+    "title": "Add timelock for Sushi rewards",
+    "body": "As of right now, the incentives for providing liquidity to the pools do not guarantee that the liquidity will permanently migrate to Sushi Swap. To ensure the longlasting success of Sushi Swap, I propose that rewards be locked until one week of trading has been available. This way, the liquidity for traders is guaranteed on day 1, no major dump when liquidity mining cools off and sushi rewards go to the long term believers. Sushi can then demonstrate its ability to be the go-to AMM and the incentives for holding Sushi become much stronger. Vote yes for a timelock on rewards. ",
+    "choices": [
+      "Yes",
+      "No"
+    ],
+    "scores_total": 36850.44451892436,
+    "scores": [
+      25359.265327262037,
+      11491.179191662326
+    ],
+    "type": "single-choice",
+    "start": 1598906100,
+    "end": 1598992500,
+    "author": "0x8D4F54913BA39263395B0067F953355813223699",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmddQ3RDFfq8VJk3o4bwfhUCU2LdfaLbd93AfVMcpiKuSw",
+    "title": "SIP-5: Add DIA LP Pool to SushiSwap",
+    "body": "SIP-5: Add DIA LP Pool to SushiSwap\nActive\n\nShould DIA LP pool be added for farming and liquidity migration on SushiSwap? \n\nIf you are not sure what to vote. Come discuss in our #governance discord channel - https://discord.gg/uSMaX2x\n\nOnce the vote is done, Chef Nomi will take the vote's results and implement the change by invoking MasterChef \"add\" function through the Timelock contract.\n\n\nChef Nomi trusts you guys, so please vote responsibly and reasonably.\n\nAs a reminder, voting opens for 24 hours. Voting power is determined by SUSHI-ETH LP staked in the MasterChef contract at ~7-8 hours (2000 blocks) after the proposal is proposed. Once approved, Chef Nomi will be implementing the change through the Timelock contract. Changes submitted by Chef Nomi are always subjected to a 48-hour time delay.",
+    "choices": [
+      "Yes Add DIA-ETH Pool",
+      "No Don't Add DIA-ETH Pool"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598818800,
+    "end": 1598847600,
+    "author": "0xf071fc2a79c61C7f34f98A67F59293FD338EbA8B",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmXBvzHrambpkztJB1ftv27v5B9yRJdB35XBTZaBJLAoE5",
+    "title": "Add DIA-ETH Pool to Sushiswap",
+    "body": "DIA (Decentralised Information Asset) is an open-source oracle platform that enables market actors to source, supply and share trustable data.\n\nTrusted Oracles for Decentralised Finance\nDeFi applications are reliant on trustable and scalable data feeds to build reliable products and avoid exploitation and manipulation. DIA leverages crypto-economic incentives and the wisdom of the community to source, validate and deliver trusted financial data\n\n\n\nhttps://token.diadata.org/\nhttps://uniswap.info/pair/0x4dc02e1bb2ec1ce4c50c351e6e06505e7b1dce8d\n\nAny interest in adding the Future of Defi's Oracles to Sushiswap?",
+    "choices": [
+      "Yes",
+      "No"
+    ],
+    "scores_total": 9027.1311338467,
+    "scores": [
+      0,
+      9027.1311338467
+    ],
+    "type": "single-choice",
+    "start": 1598788800,
+    "end": 1598961600,
+    "author": "0x79F2E52181cE6eDC712e6ACF536a918b6B6bfB66",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmQoy4LjUzdW62pHRZFne6cSYYk5dPWZ1L8Ygu8cWCoTqk",
+    "title": "Change Delegator Snapshot from Block #10650187 to #10650133",
+    "body": "Abstract\nThe community was asked to delegate their YAM tokens before Aug 13, 7AM UTC in order to reach the required quorum to submit the proposal. However, the delegator snapshot was taken 55 blocks after 7AM UTC when the actual proposal was submitted. The team could have submitted the proposal in the first block mined after 7AM UTC, block #10650133. Some community members might have delegated their tokens before the deadline, but might have not been included in the snapshot. They were hurt the most.\n\nMotivation\nThe main objective of delegating YAM tokens was to reach the quorum for proposal submission. The team decided on the 7AM deadline. The team was also very vocal about keeping the tokens in the wallet and not moving them for 3 days until the voting ends. However, the second ask wasn’t the priority at that time. After successful proposal submission, there would be more than enough time to coordinate with the community all the steps required before the actual voting would take place.\n\nSome community members might have realized these nuances, proactively delegated their tokens so the proposal could have been submitted and moved their YAM tokens to Uniswap LP in > 1 block after 7AM UTC but less than 55 blocks after 7AM UTC when the snapshot was taken. They would be ready to move their tokens back to their wallets once the team/community would decide on the voting specifics (e.g. when the voting would take place).\n\nThese community members were hurt the most. Not only were they not included in the snapshot, they also got severely hit by the impermeant loss. On the other hand, some community members (including insiders) might have dumped their tokens right after the proposal was submitted. Not only were they included in the snapshot and will be part of the future governance, they also handsomely profited thanks to Uniswap liquidity providers.\n\nSpecifications\nTake delegator snapshot at block #10650187, the first block mined after the deadline.\n\n\n\n\n",
+    "choices": [
+      "Take delegator snapshot at block #10650187, the first block mined after the deadline.",
+      "No action"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598782200,
+    "end": 1598936280,
+    "author": "0xb6788dfC6e627D8E45ecE627fBa8417b99140cEd",
+    "space": {
+      "id": "yam.eth"
+    }
+  },
+  {
+    "id": "Qma6CtXfWYczCAd2ETXY7BsXhsgieeXXQTk8JqGGpzkaMv",
+    "title": "Do you agree migrating some voting to snapshot?",
+    "body": "Migrating some voting to snapshot",
+    "choices": [
+      "Agree",
+      "Disagree"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598868000,
+    "end": 1599040800,
+    "author": "0xF5bC663Bca33af81E2fb8f72D24Cad0D14665871",
+    "space": {
+      "id": "shrimp"
+    }
+  },
+  {
+    "id": "QmUSjATNNvwbyVL3y31obfpQzamnTiyMUpjAs9CpBDT5RD",
+    "title": "Test Proposal 1",
+    "body": "Test proposal ",
+    "choices": [
+      "Yes",
+      "For Sure"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598961600,
+    "end": 1599048000,
+    "author": "0x2Abdb157b2603e17d531d4fc51a4fc6174c3dAEA",
+    "space": {
+      "id": "pillarwallet.eth"
+    }
+  },
+  {
+    "id": "QmdyL1KKcJxDNvAvj8hqJY3xgqHnq4bVQMzm9T2s6BiFS4",
+    "title": "Should the ETH/SUSHI pool migrate early with liquidity providers receiving a one-time airdrop from the dev fund?",
+    "body": "An issue facing SUSHI right now is the need to safely migrate liquidity pools while also providing incentive for people to keep their money in the LP's during migration so as to not cause any gap in liquidity.\n\nI propose migrating the ETH/SUSHI pool earlier than before, with a snapshot prior to and following migration to confirm who stayed providing liquidity during the active migration. As a result, those who continued to provide liquidity to the ETH/SUSHI pair during migration, should receive a one-time \"airdrop\" of bonus SUSHI rewards paid from the dev fund.\n\nThis would not only provide the required incentives to stay staked during migration, but would provide great community will as well.",
+    "choices": [
+      "Migrate early and receive a one-time airdrop SUSHI reward from dev fund for providing LP",
+      "Migrate as planned"
+    ],
+    "scores_total": 14509.095564470997,
+    "scores": [
+      1560.0459276239476,
+      12949.04963684705
+    ],
+    "type": "single-choice",
+    "start": 1598961600,
+    "end": 1599048000,
+    "author": "0xA9Ec7aB90eCDE9E33FC846de370a0f2532d513be",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmNW3uvb3f6qUxDSvqCNRR1UWzqqhevFmTSVWoVBCJM18j",
+    "title": "Add ADX/ETH pool",
+    "body": "Add the ADX/ETH pool to Uniswap\n\nhttps://uniswap.info/pair/0xd3772a963790fede65646cfdae08734a17cd0f47",
+    "choices": [
+      "Yes",
+      "No"
+    ],
+    "scores_total": 41.285358219404074,
+    "scores": [
+      0,
+      41.285358219404074
+    ],
+    "type": "single-choice",
+    "start": 1598961600,
+    "end": 1599134400,
+    "author": "0xd6e371526cdaeE04cd8AF225D42e37Bc14688D9E",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmURwf5RHeNxpbsXXYAarPG4uS6BeYDioHyiARqyX6qgER",
+    "title": "Add ADX/ETH pool (correct proposal)",
+    "body": "Add a pool for https://uniswap.info/pair/0xd3772a963790fede65646cfdae08734a17cd0f47\n\nThis proposal replaces https://snapshot.page/#/sushi/proposal/QmNW3uvb3f6qUxDSvqCNRR1UWzqqhevFmTSVWoVBCJM18j, with a correct snapshot block number",
+    "choices": [
+      "Yes",
+      "No"
+    ],
+    "scores_total": 2377.710246068772,
+    "scores": [
+      2179.965200754024,
+      197.7450453147479
+    ],
+    "type": "single-choice",
+    "start": 1598961600,
+    "end": 1599134400,
+    "author": "0xd6e371526cdaeE04cd8AF225D42e37Bc14688D9E",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "Qmae5fUCHKo2bqyTtfC3NgN6piYRhCSTZe8FcJ5Zaj3kob",
+    "title": "Test Q",
+    "body": "This is my prop - take it or leave it!\n\nFOR: Ok, I'll take it\nAGAINST: Go, #%&$ yourself!",
+    "choices": [
+      "FOR",
+      "AGAINST"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1599048000,
+    "end": 1599051600,
+    "author": "0x9500Bbcd33fd4d4Fd4c6ece7bc556A3E9f1cA98B",
+    "space": {
+      "id": "yflink"
+    }
+  },
+  {
+    "id": "QmVm7Zb5wzoMCS6tQ6EX8pnxAPF16i2NtnG4RbittperAZ",
+    "title": "CIP#9 - How should the admin fee be distributed to veCRV holders?",
+    "body": "Summary:\nWith CIP#7 (50% admin fee on existing trading fees) receiving a lot of support, we would like to propose two different options to distribute those fees.\n\nOptions:\n\nOption 1: Buy CRV on the open market and veCRV holders will receive CRV\n\nOption 2: The admin fees should be directed to a Curve pool and veCRV holders will claim LP tokens\n\nRead More:\nhttps://gov.curve.fi/t/cip-9-how-should-the-admin-fee-be-distributed-to-vecrv-holders/397",
+    "choices": [
+      "Buy and distribute CRV",
+      "Distribute as LP tokens"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1598997600,
+    "end": 1599343200,
+    "author": "0x052C60CEd52C7fD4Ac01FcCF0349CC495E3A2318",
+    "space": {
+      "id": "curve.eth"
+    }
+  },
+  {
+    "id": "QmdoJmcrM4qpcpQzAJUWQBb7KtPhj5eFSoPPUeveSMwkP2",
+    "title": "Should we create a theme song?",
+    "body": "Should we use DAO funds to create a Pillar theme song?",
+    "choices": [
+      "Yes",
+      "Hell No!",
+      "We already have one..."
+    ],
+    "scores_total": 295017.2964646047,
+    "scores": [
+      0,
+      295017.2964646047,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1599048000,
+    "end": 1599220800,
+    "author": "0x0EaBFFD8cE94ab2387fC44Ba32642aF0c58Af433",
+    "space": {
+      "id": "pillarwallet.eth"
+    }
+  },
+  {
+    "id": "QmNi9qRxp2Y7hKpDftcZX71i56ufcnEbtRhTDHRtrhUDHM",
+    "title": "Sell X% of Dev Fund for Dai and implement Governance",
+    "body": "Sushi will remain volatile.  We should sell enough Sushi for Dai to provide at least 2 year project runway.  This fund should be controlled by community governance and paid to dev team in installments.",
+    "choices": [
+      "25%",
+      "50%",
+      "75%",
+      "100%"
+    ],
+    "scores_total": 69.88900216972979,
+    "scores": [
+      69.88900216972979,
+      0,
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1599134400,
+    "end": 1599220800,
+    "author": "0xCAF6acB7B4825aDBF1F0CA20095D451eC65a7c51",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmcTGbfMLXmUKRJCjJHEpbJSD2yqPYUgUoCTSbbKAEbr5m",
+    "title": "Incentivize LPs after Migration",
+    "body": "We should migrate up to 1 week earlier and continue to pay 10X rewards for up to 1 week after migration.  Otherwise, Sushiswap will lose liquidity prior to migration.",
+    "choices": [
+      "0 days of 10X rewards after migration",
+      "1 day of 10X rewards after migration",
+      "2 days of 10x rewards after migration",
+      "3 days of 10x rewards after migration",
+      "4 days of 10x rewards after migration",
+      "5 days of 10x rewards after migration",
+      "6 days of 10 x rewards after migration",
+      "7 days of 10x rewards after migration"
+    ],
+    "scores_total": 2546.400803835891,
+    "scores": [
+      0,
+      0,
+      0,
+      141.67815793933164,
+      0,
+      1764.7825082491158,
+      0,
+      639.9401376474441
+    ],
+    "type": "single-choice",
+    "start": 1599134400,
+    "end": 1599220800,
+    "author": "0x2dDdb6a69f071313580073941a4491313303b1AB",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmVWUX6fRfyPxSYqSNWjNFBjHNdXop2dfrFvRXFq4Wvw4V",
+    "title": "SIP-5 Make Sushiswap Safe",
+    "body": "Background:\n\nUnlike recent forks, Sushiswap employs its own contracts, which means the risk of smart contract bugs are higher than protocols that simply fork other project's code.\n\nTo ensure long term survival of the Sushiswap platform and incentivize user loyalty, I propose a small percentage of the dev pool be used to incentivize $SUSHI holders to provide coverage for Sushi contracts on Nexus Mutual.\n\nInsurance products in DeFi are highly underexplored. Currently, Nexus Mutual is the only platform that supports the flexible coverage Sushi requires. In case of a smart contract bug that traps user funds, users who purchased cover on Nexus Mutual can be protected.\n\nBenefits:\n\nBenefit to liquidity providers: can insure against potential smart contract failure and loss of funds\n\nBenefit to users: signals developer confidence in contract security\n\nBenefit to developers: attract more demand for SUSHI as Sushiswap becomes a safer product.\n\nEconomics:\n\nThe development pool allocation currently sits at 10% of all inflation. A 10% cut of that means 1% of all inflation will be used to incentivize Nexus Mutual stakers.\n\nDuring the initial 10x bonus period (first two weeks since master chef contract goes live), 1000 SUSHI will be minted per block. After the first two weeks, 100 SUSHI will be minted per block.\n\nAssuming the price of $7/SUSHI and 10% of dev pool (1% of all inflation) is used to incentivize Nexus stakers, this implies roughly $7M first month, or $21M in SUSHI rewards. Currently there is roughly $22M staked for Uniswap contracts on Nexus; assuming conservatively that Sushi covers will be similar to Uniswap, this implies ~100% APY for those who provide insurance coverage for SUSHI.\n\nAlternatively, we can also explore using 5% of dev pool only, which will still result in a 50% APY for Nexus stakers. \n\nDetailed numbers here for review: \n\nhttps://docs.google.com/spreadsheets/d/1o293irtRAbIEYarY0x8EBMvHL8BF\ni4KaAtdtT1JYNAo/edit?usp=sharing",
+    "choices": [
+      "Use 10% of dev pool for Nexus incentives (1% of all inflation)",
+      "Use 5% of dev pool for Nexus incentives (0.5% of all inflation)"
+    ],
+    "scores_total": 11388.933418341818,
+    "scores": [
+      8433.262605451248,
+      2955.670812890571
+    ],
+    "type": "single-choice",
+    "start": 1599134400,
+    "end": 1599393600,
+    "author": "0x303763A602254E3f7712bD0864027B04700ef692",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmXcfQEtAtqbPjpi5ifgun4HbLvVvMm5gh9RAEq39EACEd",
+    "title": "Grant Proposal: https://sushi.zippo.io",
+    "body": "## Grant Proposal: https://sushi.zippo.io\nhttps://sushi.zippo.io, created by [@zippoxer](https://twitter.com/zippoxer), has become the go-to standard for the public and community to access information about SushiSwap staking, including TVL, yield rate, price, etc.\n\n@zippoxer built this SushiSwap portal more than a day before SushiSwap went live. He also continues to add more features as SushiSwap gets more developed. This shows his intention to stay for the community for long term.\n\nOnce the vote is finalized, Chef Nomi will take the weighted average value and transfer devshare $SUSHI tokens to @zippoxer address:  0xeDb7367FD9D58fc59F9d28edD74c056CE84222d3\n\n---\n\n*Chef Nomi trusts you guys, so please vote responsibly and reasonably.*",
+    "choices": [
+      "1000 SUSHI",
+      "2000 SUSHI",
+      "3000 SUSHI",
+      "4000 SUSHI",
+      "5000 SUSHI"
+    ],
+    "scores_total": 311879.62536732387,
+    "scores": [
+      4063.362242498877,
+      572.6082205493689,
+      78490.1087313148,
+      2517.14500969863,
+      226236.4011632622
+    ],
+    "type": "single-choice",
+    "start": 1599109200,
+    "end": 1599195600,
+    "author": "0xF942Dba4159CB61F8AD88ca4A83f5204e8F4A6bd",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmQvs9zBkzggN5t99RSp1i4pygQ1Le7SENvNg8kWNqidJZ",
+    "title": "Reward not removing liquidity until migration",
+    "body": "It seems to be that many people are expecting there to be a massive liquidity removal just before the migration happens. Why not reward people that actually leave the LP tokens to be migrated to reduce this effect.",
+    "choices": [
+      "Yes: Implement additional reward in Sushi for people letting their LP tokens be migrated",
+      "No: Lets see how this plays out as it is"
+    ],
+    "scores_total": 4123.0186479882,
+    "scores": [
+      4012.800046130451,
+      110.21860185775007
+    ],
+    "type": "single-choice",
+    "start": 1599134400,
+    "end": 1599307200,
+    "author": "0x73288778B2f2C0A7d1A13305916BFe24ee134cCe",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmdTijSFWvMoWFBbW1S5Gi8JXdCk7b7GSxJws15HfmbqT4",
+    "title": "Add Sushi-USDT reward pool ",
+    "body": "Following the volatility in the market, and the size on USDT ERC20, we should put up a Sushi-USDT pool. Below proposed rewards.",
+    "choices": [
+      "1x",
+      "2x",
+      "3x",
+      "4x",
+      "5x",
+      "No, better stay with Sushi-ETH"
+    ],
+    "scores_total": 7.699978487873252,
+    "scores": [
+      7.699978487873252,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1599053400,
+    "end": 1599139800,
+    "author": "0x47b306c725FE30223663189701e1c336FEC2F520",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmXm9T791myT62Jj3iokarQYuUF2XKMBUXmqUKh5fKpK1L",
+    "title": "Liquidity Migration™️ Proposal",
+    "body": "With the complete audits of SushiSwap smart contracts by [Quantstamp (security review)](https://twitter.com/Quantstamp/status/1301280985334439936) and [Peckshield (full audit)](https://twitter.com/NomiChef/status/1300742677680463874) without critical/high severity issues, the SushiSwap protocol is ready to do liquidity migration to spin off the first community-owned AMM. Vote on this proposal if you agree that we should perform liquidity migration before the end of initial bonus reward distribution period. \n\nWith its own AMM, SushiSwap will be able to collect 1/6 of trading fees to distribute back to $SUSHI token holders. Note that liquidity migration requires no action from liquidity providers. The process will be seamless and everyone will maintain the same amount of LP tokens.\n\nIf this proposal passes, Chef Nomi will deploy all the necessary smart contracts - Migrator, SushiSwapFactory (UniswapFactory), SushiMaker, and SushiBar - and set \"setMigrator\" function call the Timelock smart contract. 48 hours after the timelock, liquidity migration will happen.\n\n---\nVoting period for this proposal is 1 day. Chef Nomi trusts you guys, so please vote responsibly and reasonably.",
+    "choices": [
+      "Yes",
+      "No"
+    ],
+    "scores_total": 510707.0235088916,
+    "scores": [
+      442938.5439370743,
+      67768.47957181689
+    ],
+    "type": "single-choice",
+    "start": 1599141600,
+    "end": 1599228000,
+    "author": "0xF942Dba4159CB61F8AD88ca4A83f5204e8F4A6bd",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmbHX9TGWLsW1E2QeS6SrRruonbSYh3Dqc6aZqq9gFSW5o",
+    "title": "Incentivize LPs to stay staked during the migration",
+    "body": "The moment of migration itself is the most valuable time for LPs to provide liquidity. Nothing in the existing structure incentivizes LPs being staked at the moment of migration. \n1. There are incentives to LPs BEFORE migration (10x pool)\n2. There is a proposal to offer incentives AFTER migration\n3. There is NO incentive to be locked in at the moment of migration! This is when SushiSwap needs LPs the most.\n\nCurrently anyone can just get sushis without participating in the migration. Why would you stay staked if you can make 10X rewards before and then pull out your funds and go on your merry way before migration happens?\n\nProposed Solution: Provide a large, one-time drop of Sushis for all LPs who are staked at the time of migration. This is even more important than providing incentives before the migration.\n",
+    "choices": [
+      "No incentive during migration is needed",
+      "One Time drop of sushis to LPs who are staked during migration",
+      "One time drop, but offset it with a reduction in pre-migration rewards"
+    ],
+    "scores_total": 16121.087789341558,
+    "scores": [
+      31.009391552630323,
+      16046.100659845211,
+      43.97773794371543
+    ],
+    "type": "single-choice",
+    "start": 1599156000,
+    "end": 1599328800,
+    "author": "0x18f768455E7f5fB09fC491fd86bcc282BcDD5973",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmZyM1QzahgZt1D4D9ys21PHhVjhW99pH68D4AFcSqoCt2",
+    "title": "Marketing Channel/Team",
+    "body": "Cheers,\nTo help funneling the communication, I propose opening a marketing channel so we can discuss what content we need.\nI believe initially we can open the channel then discuss what resources we need, how many, and how we will run the budget.\n\nKeep in mind we need content creators:\n1. Content writers\n2. Social media managers\n3. Graphic designers\n4. Video Content\nand whatever we see that we might need, we can vote on that later.\n ",
+    "choices": [
+      "Yes, Open channel and let's discuss it",
+      "No, who needs marketing."
+    ],
+    "scores_total": 2384.8631931130653,
+    "scores": [
+      2384.8631931130653,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1599168600,
+    "end": 1599255000,
+    "author": "0x47b306c725FE30223663189701e1c336FEC2F520",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmcxDxp9qRM8qxQBA1LHzBbhzZv7KXnqUR4zJJmNoG9ANe",
+    "title": "Grant Proposal: http://sushiswap.xyz/",
+    "body": "http://sushiswap.xyz/, created by @0xdev0, is a fork of Uniswap interface with Sushi branding.\n\nNot available fo trading yet! Once the new contracts are deployed, the interface will be updated and will be immediately usable for trading.\n\nWhile it's not a fully custom solution yet, time is of the essence now and we need a functioning UI ASAP. Uniswap has already done a great job on the UI and there is no reason not to use them in the beginning.\n\n@0xdev0 has decided to forgo 90% of the grant allocation and instead distribute it to the top 10 proposal voters.\n\nIf this proposal passes, 90% of the grant amount shall be distributed to the top 10 voters equally. The remaining 10% should be awarded to @0xdev0 to 0xeDb7367FD9D58fc59F9d28edD74c056CE84222d3. This distribution should either be done by Chef Nomi directly or by sending the funds to @0xdev0 who will then do the distribution manually.\n\nGrant value should be determined by the weighted average value.",
+    "choices": [
+      "2000",
+      "4000",
+      "6000",
+      "8000",
+      "10000"
+    ],
+    "scores_total": 1276.3830422710491,
+    "scores": [
+      588.8466270139063,
+      0,
+      0,
+      0,
+      687.5364152571428
+    ],
+    "type": "single-choice",
+    "start": 1599220800,
+    "end": 1599307200,
+    "author": "0xa4ebD70668ABD528BEC1cE8B0de205c230BD1953",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmRc3xHBEvhzXn5Uyqp3GJw2Cn8iDv9p9zdVyGzmZkyXBw",
+    "title": " proposal for the Sushiswap community by @SBF_Alameda, CEO of @FTX_Official  and Alameda Research.",
+    "body": "Background\nSolana is a fast blockchain -- probably the fastest.  It can support over 50k tps without sharding, and costs about $0.00002 per transaction.\n\nSerum is an on-chain DeFi ecosystem built on Solana.  The first core piece of it, an on-chain DEX, went live last week.\n\nNotes: This is submitted on behalf of EcoSerum, a Serum node.  I am Sam Bankman-Fried.  I am involved in the development of Serum but have not been involved in the development of Sushi in any way.  This proposal is not on behalf of or related to FTX.  I have exposure to both SRM and SUSHI.\n\n\nProposal\n\nThe Sushi community builds out support for Sushiswap on Solana\nSushi rewards are paid to both Ethereum and Solana/Serum based Sushiswap\nProportional to the TLV in each\nOr alternately fixed to each pool\nThe Sushi community composes this with the Serum orderbooks\nEach Sushi pool has a curve, currently constant-product\nThe pool sends bids/offers into the associated Serum orderbook to simulate that curve\nThis allows the Sushi AMM to share liquidity and volume with the orderbook\nFTX has a bridge from ERC20 <> SPL (Solana token) Sushi; in the next week, sollet.io will as well\nSushi will also be able to compose with a borrow/lending protocol on Serum to allow the pools to trade on margin, though that’s not necessary for V1\n\nRewards\n\nEcoSerum, a Serum node that helps build out the community, will give the following rewards:\n50k SRM for 1+2\n1 locked MegaSerum for 1-5\nOne MegaSerum is 1 million Serum put together\nThis will allow the Sushi community to participate in Serum, run a node, receive yield, benefit from a buy/burn, and receive discounts\nThis will be locked (not sellable or transferable) for 1-7 years: fully locked until Aug 1 2021, and then unlocking linearly over the 6 years after that\nThese rewards are for the Sushi community, controlled by governance, to do what they want with\nIn addition, 20k SRM for 1+2 and another 10k for 1-5 to the team who builds it\n\nTimeline\n\nThe target would be for pieces of this to roll out within a month, and completion before the end of 2020.  The assumption is that work would not start in earnest until after the Sushiswap migration is complete.\n",
+    "choices": [
+      "Yes",
+      "No",
+      "Yes but with modifications."
+    ],
+    "scores_total": 84704.73842636561,
+    "scores": [
+      71920.49452360983,
+      12523.09978696136,
+      261.1441157944349
+    ],
+    "type": "single-choice",
+    "start": 1599188400,
+    "end": 1599361200,
+    "author": "0x01f2f39f782228772e40446ef85f42cF775daa9b",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmP5t4xVLaZUST7E9r8KX4DZvmMz6cRnaxybAorx7eyw6A",
+    "title": "Pay devs to make downloadabl client",
+    "body": "Chef Nomi want users to make their own trading UI. Custom-made UI will run on private servers. Server admin can change code at any moment - ask users sign malicious transactions. Users don't look at transaction code.\n\nThis is why BTC, ETH etc have downloadable clients. Integrity of downloaded client can be verified via its hash, which is published by auditors. Downloaded client won't update without permission.\n\nWill we pay developers from the devshare to make a downloadable client?",
+    "choices": [
+      "Yes",
+      "No"
+    ],
+    "scores_total": 77.47600193415786,
+    "scores": [
+      77.47600193415786,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1599273000,
+    "end": 1599359400,
+    "author": "0x552C35f51A52fa1bF1CA481A9a57D464474248D2",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmaWoU9y6P1P7FTc4dH8gwoorwdMXM2oZbGLGRePM3MfUV",
+    "title": "Upgrade Treasury Vault to solve gas subsidy, gitcoin and more ",
+    "body": "### Summary\nThis proposal bundles a few improvements together which have compounding effects. It will solve for [gas subsidy](https://gov.yearn.finance/t/gas-costs-are-too-damn-high/4655), [gitcoin grants](https://gov.yearn.finance/t/direct-of-rewards-towards-ethereum-public-goods-funding/3699), inability to convert other Curve tokens into rewards for governance stakers.\n\n### Abstract\nAdd split functionality to TreasuryVault which can send the rewards to multiple destinations before sending them to governance staking contract. Add ability to withdraw from Curve pools. Add ability to trade using Uniswap.\n\n \n### Motivation\nThere is a very good [competing proposal](https://gov.yearn.finance/t/proposal-change-vault-harvest-function-to-reward-function-caller/4726) which solves for gas refunds by modifying `harvest()` function. But here is some rationale for using TreasuryVault instead:\n1. Putting this in `harvest()` doesn't refund on failed txs, which can eat up $500 by the moment it fails\n2. Requires redeploying and migrating all strategies, which can't be done easily for the strategies yDAI and yWETH vaults are currently positioned in.\n3. Treasury contract needs upgrading anyway, I was working on a converter and reward distribution bot and was stuck with OneSplit not being smart enough to unwrap Curve LP tokens.\n4. We'll be able to solve converting other assets finally and distribute the rewards accumulated from vaults other than yUSD.\n5. We can bundle this with gitcoin proposal, which is time-sensitive, since the next round starts on September 15th.\n\n### Specification\n1. Develop and deploy a TreasuryVaultV2 contract with these additional features:\n   - Ability to whitelist additional [CurveDeposit](https://www.curve.fi/contracts) contracts when more pools are created.\n   - Unwrap into underlying Curve LP coins or a single coin (CurveDeposit has us covered here).\n   - Trade via Uniswap in addition to OneSplit, this helps immensely with testing and optimizing the bot which does the trading.\n   - [Disperse](https://disperse.app)-like split functionality which can send different amounts to multiple recipients.\n   - The split functionality should also call `notifyRewardAmount` when it sends rewards to `ygov`.\n2. This proposal will require some additional work for gas accounting, which can be delegated to a bot.\n\n### Urgency\nGiven the gas costs are eating through our budget at $25k/day rate, I propose to have an expedited vote for this with a 1-day duration. We should have the implementation ready shortly after.",
+    "choices": [
+      "Implement the proposal",
+      "Reject the proposal"
+    ],
+    "scores_total": 1387.2668273978863,
+    "scores": [
+      1387.2668273978863,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1599224400,
+    "end": 1599310800,
+    "author": "0x7A1057E6e9093DA9C1D4C1D049609B6889fC4c67",
+    "space": {
+      "id": "yearn"
+    }
+  },
+  {
+    "id": "QmekFdvYrLvWZoaWmcNToybfDKzhMqZKnqRmGVUmbs3eW6",
+    "title": "Incentives for Uniswap LPs to Migrate to SUSHISWAP DEX",
+    "body": "Penalize LPs of sushiswap who remove Liquidity before migration to the new sushiswap DEX. \n\n*This will encourage people who are current LPs to follow throw with the migration.\n\nPlan to implement proposal:\n\ncreate locking period for claiming MAX sushi rewards until after migration has taken affect.\n\n- Disincentive not to migrate:\n\nremoving liquidity before migration subjects LPs to losing 2/3 of all sushi rewards\n\nIncentive to migrate:\n\nReward those who migrated with the 2/3 rds of shushi confiscated from penalized LPs\n\n",
+    "choices": [
+      "Penalize",
+      "Do Not Penalize"
+    ],
+    "scores_total": 1347.4821231458309,
+    "scores": [
+      798.3880864901066,
+      549.094036655724
+    ],
+    "type": "single-choice",
+    "start": 1599220800,
+    "end": 1599307200,
+    "author": "0x2164d6b2EF215A4f46912BdD18F27a25041EBe29",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "Qmd5SuojxZ3fHvjRzZCNxPzd1ooobeJi4CX4CMFPaazuT8",
+    "title": "What is the prose of Justice?",
+    "body": "PoJ",
+    "choices": [
+      "So ordered.",
+      "So determined.",
+      "So judged.",
+      "Whatever."
+    ],
+    "scores_total": 20,
+    "scores": [
+      0,
+      0,
+      20,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1599220800,
+    "end": 1599307200,
+    "author": "0x1C0Aa8cCD568d90d61659F060D1bFb1e6f855A20",
+    "space": {
+      "id": "anjmol"
+    }
+  },
+  {
+    "id": "QmXHmxpd4TRcJds9kpkzwNAtgbYhscgZohiTP6YtJX85jN",
+    "title": "Change SUSHI to a fixed supply of 4 billion",
+    "body": "This proposal is to change SUSHI to a fixed max supply. This will create more interest in the project, reward early adopters, and may have the ability to increase the value of the tokens. \n\n\n## What should the fixed supply be? \n\nIf we look at the Numerology of the name Sushi:\n\nS\t19\nU\t21\nS\t19\nH\t8\nI\t9\nTotal\t76\nSubtotal\t(7+6) =13\nSubtotal\t(1+3) =4\n#### Your lucky number is\t4\n\n*General Traits:*\tLucky number 4 is usually blessed with amazing management skills. Sushi is very good at summarizing the scattered documents, tackling complicated situations and handling problems with patience. You can't dispute or argue with Sushi thanks to the super reasoning power Sushi has.\n\n*Strong points:*\tNumber 4 makes Sushi very patient, trustworthy and reliable. Sushi is proud but not arrogant. Sushi can make great achievements in life given the loyal nature and immense knowledge.\n\n*Weak points:*\tSushi can be very stubbornness, envious, quarrelsome and even gloomy at times. sometimes boring. Sushi happens to be a bit greedy too.\n\nWith four (4) being the lucky number of SUSHI, this proposal is for changing the fixed supply to `4 billion (4,000,000,000) sushi tokens`. \n\n**No further tokens will be created after 4 billion tokens are reached. **\n\n\nPlease vote\n\n\n\n",
+    "choices": [
+      "Limit supply of Sushi to 4 Billion tokens",
+      "Continue as is"
+    ],
+    "scores_total": 1792.827715161256,
+    "scores": [
+      58.08532471418655,
+      1734.7423904470695
+    ],
+    "type": "single-choice",
+    "start": 1599307200,
+    "end": 1599825600,
+    "author": "0x717d52e84eF30875De52834603c112675CeDB7CA",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmYT9oG72so1XM8n3xg444AxaEnzSKXEQDh11U1RiYA5kU",
+    "title": "Should Set Max Supply to 70M?",
+    "body": "Set max supply to 70M Sushi. This will create FOMO to gather as much Sushi as possible to reward early LPs. It will also create the price of Sushi to spike creating more awareness in the crypto community.  Once the migration is over... and SushiSwap is in fully operational.... it will continue to provide value to early adopters.",
+    "choices": [
+      "Yes",
+      "No",
+      "Yes, but needs to be a higher max supply"
+    ],
+    "scores_total": 341.6681625281049,
+    "scores": [
+      294.4866675934072,
+      0,
+      47.18149493469768
+    ],
+    "type": "single-choice",
+    "start": 1599278400,
+    "end": 1599451200,
+    "author": "0x4Eb2C56dC750B0eA0e3D7cA5F9B6230bf6dF2D10",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmW1SEwSLvc6oU4zNPCWVwyKSjNe5wAjdo6igj3qjtviLN",
+    "title": "Allow mass harvesting of SUSHI rewards",
+    "body": "Background\nLet's face it, until we migrate the entire service to another blockchain, we are going to have to deal with paying ridiculously high GAS fees to ETH miners. And, it's already begun, in fact Mid-August saw total Ethereum GAS fees top a record $8.6 million in one day.\n\nThese GAS fees are like tapeworms that eat up all those great SUSHI gains LP's have come accustomed to seeing accrue on their screens. \n\nProposal\nChef Nomi implements code enabling a button that will give LP's a choice of harvesting of the SUSHI tokens as a group maybe once every 3, 6, 9 or 12 hours to save on such fees-- the longer the wait, the greater the savings.\n\nI realize this could be a lot of work to code, but I believe the GAS saving could be amazing. It will further incentivize LP's to reup and their restake even more ETH/SUSHI or other pairs, and at the very least, serve as a reward for those providing liquidity to the pool. \n\nI am not sure how much GAS we will save by doing this, but perhaps a portion of the savings could go back to the developers or go into a fund that will pay for the Nexus Mutual Insurance for the LPs or something like that. \n\nI don't have a UI mock-up or anything put together yet, but a fellow community member suggested a \"Karaoke Together\" button to allow this group harvesting capability. Below is how I imagine it working:\n\n1. LP goes to sushiswap.org and connects his/her wallet\n2. Clicks on the Home screen which instead of displaying only the existing 2 buttons showing your SUSHI balance and Total Supply;\n3. The LP can choose 1 of 2 more buttons under a title \"HARVEST YOUR SUSHI\" \n4. Button One reads \"Harvest via TAKE OUT\" for solo harvesting which uses more GAS;\n5. And the other reads, \"KARAOKE TOGETHER,\" and save GAS fees. \n\nOf course there could be links that explain the process to the user before they choose the option best for them. \n\nI am hoping someone in the community can build this mock this up really quickly and give @NomiChef a better visual of how this could look in the future. \n\n\n\n\n\n\n\n",
+    "choices": [
+      "Yes! Add \"KARAOKE TOGETHER\" and enjoy more SUSHI",
+      "No! Give my SUSHI gains away to \"TAPEWORM\" ETH Miners!"
+    ],
+    "scores_total": 4543.929610988076,
+    "scores": [
+      3318.3100400436274,
+      1225.6195709444485
+    ],
+    "type": "single-choice",
+    "start": 1599393600,
+    "end": 1599998400,
+    "author": "0xc080E234DBA2545E93872cE6E96E683A4e29046b",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmdhULbaTnHSoGubstHFn5mims56qKWZqbv6zqyfb7LLdw",
+    "title": "CIP#11 - Which pool should admin fee be tested on?",
+    "body": "Summary:\n\nWith CIP#7 and #9 (50% admin fee on existing trading fees to be distributed as CRV to veCRV holders) receiving a lot of support, we would like to propose the admin fee to be implemented on one or multiple pools.\nA DAO vote will created and will be subsequently implemented after one or multiple pools have been selected.\n\nAs a reminder, this would not change the trading fee.",
+    "choices": [
+      "Y Pool",
+      "sUSD Pool",
+      "ren Pool",
+      "sbtc Pool",
+      "All Pools"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1599292800,
+    "end": 1599602400,
+    "author": "0x052C60CEd52C7fD4Ac01FcCF0349CC495E3A2318",
+    "space": {
+      "id": "curve.eth"
+    }
+  },
+  {
+    "id": "Qma4ZJB8cmqzqAVYR35h5dEFUHAXHCeazwx9q3nYNM6jvN",
+    "title": "SIP-5 Add SWRV-ETH LP Pool",
+    "body": "Swerve Finance (https://swerve.fi/) is a 100% community-owned fork of Curve with fairer tokenomics for Liquidity Providers, and a max supply of 33M SWRV. More details can be found on the website.\n\nSWRV Contract Address: 0xb8baa0e4287890a5f79863ab62b7f175cecbd433\n\nAs of now, they have $400M+ locked in the protocol, just a few hours after launch.\n\nThis proposal seeks to add SWRV-ETH LP pool which would help create more liquidity for SWRV-ETH pool (currently it's quite low) and reward LPs with the same initial reward weight of 0.2x as was assigned for the Pools added in SIP-4.\n",
+    "choices": [
+      "Yes",
+      "No"
+    ],
+    "scores_total": 0,
+    "scores": [
+      0,
+      0
+    ],
+    "type": "single-choice",
+    "start": 1599300000,
+    "end": 1599386400,
+    "author": "0x6D3E136698beFEe231cD2E4E94bE0105D62FA01F",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmXXQiooUimGRBnDuYDVkGyG4LGBJ9FkdSFrTyrZ2wUaSx",
+    "title": "Path Forward Proposal",
+    "body": "Chef Nomi made some unfortunate decisions that hurt members of the community - even though he may have been doing what he thought was right.\n\nTo help this community recover, the following steps should be taken.\n\n1. Chef Nomi transfers the dev fund, and admin keys over to a community elected multisig. The admin ownership stays with the multisig until direct community governance is vetted and ready.\n2. All future decisions will be done by community vote and enacted by the multisig admins.\n3. Chef Nomi will transfer all the LP tokens and Eth from the sold $SUSHI back to the multisig - as this was done without community vote.\n\nAfter that, the community will hold two separate votes for:\n\nA) A one time grant for Nomi for his work done. (I'd propose 200,000 $SUSHI vested over 3 years)\nB) A wage for Nomi should he wish to continue to work on and develop the project.\n\nIn this model, Nomi and others would not have any status above any other member of the community. All decisions would be by community vote.\n\nThe dev fund will be used to support development on a grant basis through proposals and enacted by the multisig team.\n\nThis proposal give Nomi a chance to redeem his reputation, be compensated for the work he has done, and continue to work on the project while removing the systemic risk we've had so far.\n\nIt is also a chance for Nomi to show faith in community governance. Should the community vote for this proposal and Nomi not take the steps to return ALL funds to a multi-sig, then this project is truly dead.",
+    "choices": [
+      "Approve this Proposal",
+      "Deny this Proposal"
+    ],
+    "scores_total": 11290.997928327954,
+    "scores": [
+      10895.087102905212,
+      395.9108254227429
+    ],
+    "type": "single-choice",
+    "start": 1599307200,
+    "end": 1599433200,
+    "author": "0xE80B5097862cAB9d83846875752d7201fF42C7E9",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  },
+  {
+    "id": "QmYG4VT8dJaK7jy3zw799mUPKTXF3VitxEeTmpn9ZR9RR3",
+    "title": "Go with MYSTIC over MOLOCH?",
+    "body": "Moloch was summoned to cure common OS development tragedies and to defeat its own spectre (👹) over eth2. Moloch drew blood and treasure to make eth2 a reality 💰.  From this grant-DAO template, the contracts have been adapted for venture investments in v2 💸. Recent upgrades, in v2x deployed by LexDAO & Raid Guild ⚔️, give Moloch greater magick to allow summoning circles to form and deploy capital and intent into many other contracts on Ethereum 🧙. Shall we maintain OG Moloch mystique, or delve deeper into MYSTIC mysterium in advance of v3, modular designs 🔮?",
+    "choices": [
+      "MOLOCH",
+      "MYSTIC",
+      "OTHER, LET'S KICK INTO OTHER VOTE"
+    ],
+    "scores_total": 0,
+    "scores": [],
+    "type": "single-choice",
+    "start": 1599307200,
+    "end": 1599652800,
+    "author": "0x1C0Aa8cCD568d90d61659F060D1bFb1e6f855A20",
+    "space": {
+      "id": "lexdao"
+    }
+  },
+  {
+    "id": "QmdRjsrrEBq6JTXN9dcEHG8sFzaZ7jWdNsaENrQHuDxStc",
+    "title": "Liquidity Migration Proposal 2.0",
+    "body": "Originally published as a tweet thread: https://twitter.com/SBF_Alameda/status/1302534617522556929\n\nVote yes if you support this plan. Actual details to come in another proposal. Vote no if you support scrapping this plan and going back to the drawing board\n\nText of the tweet thread:\n\n1) Now that the Sushi key has been transferred, it's time to transfer control to a multisig of myself and Larry Ce...\nJust kidding.  Here's the actual plan (https://discord.com/channels/748031363935895552/748033004323995680/752077277390700605)\n\n2) a) the old migration was tied to Nomi's key, so cancelling that.\nb) replacing with an identical one tied to mine.\nc) putting up a vote; if majority vote _against_ this migration in the next 12h we'll cancel it\n\n3) going to transfer control to a multisig.\nIf you would like to be a member of this, please comment on this post with \"I would like to be a multisig key holder for sushi\".  We'll take the top 20 by likes, and have a proper vote on them.\n\n4) will then transfer keys to that multisig group.\nAfter that -- Sushi shall be back in the community's hands.\nWe'll put up a vote on this whole plan, if majority vote against then we'll scrap it and go back to the drawing board.",
+    "choices": [
+      "Yes",
+      "No"
+    ],
+    "scores_total": 210317.5386899459,
+    "scores": [
+      206975.20056418443,
+      3342.3381257614597
+    ],
+    "type": "single-choice",
+    "start": 1599390000,
+    "end": 1599476400,
+    "author": "0xD57581D9e42E9032e6f60422fA619b4A4574Ba79",
+    "space": {
+      "id": "sushigov.eth"
+    }
+  }
+]

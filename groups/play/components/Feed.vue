@@ -2,7 +2,16 @@
 import Proposal from './Proposal.vue'
 
 const { log } = useLogger('Feed')
-const { state, proposals, proposalsFiltered, proposalsAnsweredMeta, proposal, skip, answer } = await useApi()
+const { state, page, proposals, proposalsAnsweredMeta, proposal, skip, answer } = await useApi()
+
+const winRateText = computed(() => {
+  return Math.round(proposalsAnsweredMeta.value.winRate * 100)
+})
+
+function clear() {
+  localStorage.clear()
+  window.location.reload()
+}
 
 onMounted(() => {
   log(':onMounted')
@@ -25,9 +34,12 @@ onMounted(() => {
       >
       </Proposal>
     </div>
+    <!-- footer -->
     <div class="fixed bottom-0 left-0 flex flex-row w-full justify-center p-2">
-      <div class="max-w-550px flex">
-        <pre class="text-xs">{{ proposalsAnsweredMeta }}</pre>
+      <div class="max-w-550px flex flex-col items-center content-center">
+        <h2 class="font-bold" style="font-size: 50px">{{ winRateText }}%</h2>
+        <p>your winrate</p>
+        <span class="cursor-pointer underline mt-2" @click="clear()">start again</span>
       </div>
     </div>
   </div>
@@ -41,6 +53,6 @@ onMounted(() => {
   @apply bg-green-3;
 }
 .lose {
-  @apply bg-red-4;
+  @apply bg-red-3;
 }
 </style>
