@@ -6,7 +6,10 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'snapshot-fun'
+      title: 'snapshot.guess',
+      meta: [
+        { name: 'description', content: 'Get a random Proposal from snapshot.org and try to guess how people voted.' }
+      ],
     }
   },
   modules: [

@@ -1,5 +1,8 @@
-import { useQuery } from '@urql/vue'
+// import { useQuery } from '@urql/vue'
 import { useStorage } from '@vueuse/core'
+import type { Client } from '@urql/core';
+import { Ref } from 'vue'
+import { wait } from '@/utils'
 
 export interface AnswerPayload {
   id: string
@@ -8,39 +11,61 @@ export interface AnswerPayload {
   ts: number
 }
 
-const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
-
 export async function useApi() {
   const { log } = useLogger('useApi')
-  
-  const { data, fetching, error } = useQuery({
-    query: `
-    query Proposals {
-      proposals(
-        first: 100,
-        skip: 0,
-        where: {
-          state: "closed"
-          type_in: ["single-choice"]
-        },
-        orderBy: "scores_total",
-        orderDirection: asc
-      ) {
-        id
-        title
-        body
-        body
-        choices
-        scores_total
-        scores
-        type
-        start
-		    end
-        author
-      }
-    }
-    `
+
+  const urql = inject('$urql') as Ref<Client>
+  // log(':urql', urql)
+
+  const pageSize = 10
+  const page = useStorage('snapshot.proposalsPage', 0 as number)
+  const pageSkip = computed(() => {
+    return pageSize * page.value
   })
+
+  const proposals = ref([]) as any
+
+  async function addProposals() {
+    const { data } = await urql.value.query(
+      `
+        query Proposals($skip:Int, $first:Int) {
+          proposals(
+            first: $first,
+            skip: $skip,
+            where: {
+              state: "closed"
+              type_in: ["single-choice"]
+            },
+            orderBy: "scores_total",
+            orderDirection: asc
+          ) {
+            id
+            title
+            body
+            body
+            choices
+            scores_total
+            scores
+            type
+            start
+            end
+            author
+            space {
+              id
+            }
+          }
+        }
+      `,
+      {
+        skip: pageSkip.value,
+        first: pageSize,
+      }
+    ).toPromise()
+    // log(':addProposals data', data)
+    proposals.value = [...proposals.value, ...data?.proposals]
+  }
+
+  addProposals()
 
   const proposalsAnswered = useStorage('snapshot.proposalsAnswered', [] as AnswerPayload[])
 
@@ -48,12 +73,12 @@ export async function useApi() {
     return proposalsAnswered.value.reduce((acc: any, val: AnswerPayload) => {
 
       acc.totalAnswers += 1
+
       if (val.isWin !== null) {
         if (val.isWin) acc.wins += 1
         else acc.loses += 1
+        acc.winRate = acc.wins / (acc.wins + acc.loses)
       }
-
-      acc.winRate = acc.wins / (acc.wins + acc.loses)
 
       return acc
     }, {
@@ -64,33 +89,25 @@ export async function useApi() {
     })
   })
 
-  const proposals = computed(() => {
-    return data.value?.proposals || []
-  })
-
   const proposalsFiltered = computed(() => {
-    // return proposals.value.filter((p: any) => {
-    //   return !proposalsAnswered.value.find(a => a.id === p.id)
-    // })
-    return proposals.value
+    return proposals.value.filter((p: any) => {
+      return !proposalsAnswered.value.find(a => a.id === p.id)
+    })
   })
-
-  const proposalIndex = ref(0)
 
   const proposal = computed(() => {
-    return proposalsFiltered.value[proposalIndex.value]
+    return proposalsFiltered.value?.[0] || null
   })
 
   const state = ref(null) as any
 
   async function answer(idx: number) {
     log(':answer', idx)
-    log(':answer', proposal.value)
+    // log(':answer', proposal.value)
     if (!proposal.value) return
-    // TODO: get scores from server by proposal.id
+    // TODO get scores from server by proposal.id
     const maxScoreIndex = proposal.value.scores.reduce((acc: any, val: number, i: number) => {
       if (val >= acc.value) {
-        log(':maxScoreIndex >=', val, i, acc)
         acc.value = val
         acc.idx = i
       }
@@ -99,7 +116,7 @@ export async function useApi() {
       idx: 0,
       value: 0,
     })
-    log(':answer maxScoreIndex', maxScoreIndex)
+    // log(':answer maxScoreIndex', maxScoreIndex)
 
     const isWin = maxScoreIndex.idx === idx
     if (isWin) {
@@ -111,50 +128,38 @@ export async function useApi() {
 
     await wait(1000)
 
+    state.value = null
+
+    await wait(200)
+    skip(idx, isWin)
+  }
+
+  function skip(answer: number | null = null, isWin: boolean | null = null) {
+    log(':skip')
+
     const answerPayload: AnswerPayload = {
       id: proposal.value.id,
-      answer: idx,
+      answer,
       isWin,
       ts: Date.now()
     }
-    log(':answer answerPayload', answerPayload)
+    // log(':skip answerPayload', answerPayload)
     proposalsAnswered.value.push(answerPayload)
 
-    state.value = null
-    await wait(500)
-
-    skip(false)
-  }
-
-  function skip(saveAnswer = true) {
-    log(':skip')
-    if (saveAnswer) {
-      const answerPayload: AnswerPayload = {
-        id: proposal.value.id,
-        answer: null,
-        isWin: null,
-        ts: Date.now()
-      }
-      log(':skip answerPayload', answerPayload)
-      proposalsAnswered.value.push(answerPayload)
-    }
-
-    const proposalIndexNext = proposalIndex.value + 1
-    if (proposalsFiltered.value.length - 1 >= proposalIndexNext) {
-      proposalIndex.value = proposalIndexNext
-    }
-    else {
-      log(':skip DONE need more')
+    if (proposalsFiltered.value.length === 0) {
+      page.value += 1
+      addProposals()
     }
   }
 
   return {
     state,
     proposals,
-    proposalsAnswered,
+    // proposalsAnswered,
     proposalsAnsweredMeta,
-    proposalsFiltered,
+    // proposalsFiltered,
     proposal,
+    page,
 
     answer,
     skip,
